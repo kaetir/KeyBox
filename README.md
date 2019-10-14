@@ -16,9 +16,8 @@
 
 *gestionnaire de mot de passe physique*
 
-- Utiliser un raspi 0 si possible + usb board
-- Écran 
-    - E-ink
+- Utiliser un raspi 0w si possible + usb board
+- Écran
     - Oled
 - Authentification 
     - Boutons 
