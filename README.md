@@ -31,3 +31,5 @@ On branche le raspi sur un pc ou un tel pour entrer le mot de passe en auto
 Ajout des mots de passe par wifi et/ou physique
 
 Stockage des mots de passe chiffré dans un Json
+
+Double wallet pour récupération 
