@@ -1,18 +1,12 @@
 {
-	"mainuser": "test1",
-	"mainpasswd": "unSHA256SVP",
+	"mainuser": "thibault",
+	"mainpasswd": "3c71cad6982778650fcecd4f37a34ef4349f6e01adaf3cddcb804856c92096b698411c42c7d68f9d6e380c0b487b4019203956496eaa7cac9ac96fdcf3d63dfd",
 	"entries": [
 		{
 			"application": "app",
-			"username": "user",
-			"nonce": "c\u00f9azjefziefpqdnfpnz\u00e9",
-			"passwd": "cyphertext"
-		},
-		{
-			"application": "compte en banque",
-			"username": "jean thierry",
-			"nonce": "010101011010",
-			"passwd": "cyphertext"
+			"username": "moi",
+			"nonce": "47b88575ec802b6c974decb64b3dd47d",
+			"passwd": "e1e334d7e0ee"
 		}
 	]
 }

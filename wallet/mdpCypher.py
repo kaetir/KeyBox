@@ -8,6 +8,7 @@ from cryptography.hazmat.primitives.ciphers.algorithms import AES
 from cryptography.hazmat.primitives.ciphers.modes import CTR
 from cryptography.hazmat.backends import default_backend
 
+from Crypto.Hash import SHA512
 
 # mainpasswd = str of the userpasswd
 # passToCrypt = str to crypt
@@ -30,6 +31,10 @@ def mdpDecrypt(mainpasswd, passToDecrypt, nonce):
     Decryptor = Ciph.decryptor()
 
     return Decryptor.update(bytes.fromhex(passToDecrypt)).decode("utf8")
+
+
+def hash(toHash):
+    return SHA512.new(bytes(toHash,'utf8'))
 
 
 if __name__ == "__main__":

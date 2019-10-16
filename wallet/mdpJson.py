@@ -1,8 +1,13 @@
 import json
 
 
-def addEntry(file, application, username, nonce, passwd):
-    with open(file, "r+") as f:
+def genNewFile(filename, username, mainPasswdHash):
+    with open(filename, "x") as f:
+        jload = {"mainuser": username, 	"mainpasswd": mainPasswdHash, "entries": [] }
+        f.write(json.dumps(jload, indent=4).replace("    ",'\t'))
+    
+def addEntry(filename, application, username, nonce, passwd):
+    with open(filename, "r+") as f:
         content = f.read()
         jload = json.loads(content)
         jload["entries"].append({"application" : application,"username":username, "nonce" :nonce, "passwd" : passwd})
@@ -11,24 +16,28 @@ def addEntry(file, application, username, nonce, passwd):
         f.write(json.dumps(jload, indent=4).replace("    ",'\t'))    
 
 
-def getEntries(file):
-    with open(file, "r") as f:
+def getEntries(filename):
+    with open(filename, "r") as f:
         content = f.read()
         jload = json.loads(content)
         return jload["entries"]
 
-def getEntry(file, application):
-    with open(file, "r") as f:
+def getEntry(filename, application):
+    with open(filename, "r") as f:
         content = f.read()
         jload = json.loads(content)
-        return [d for d in jload["entries"] if d["application"] == application ]
+        return [d for d in jload["entries"] if d["application"] == application ][0]
 
+def getUsername(filename):
+       with open(filename, "r+") as f:
+        content = f.read()
+        jload = json.loads(content)
+        return jload["username"]
 
-def genNewFile(filename, username, mainPasswdHash):
-    with open(filename, "x") as f:
-        jload = {"mainuser": username, 	"mainpasswd": mainPasswdHash, "entries": [] }
-        f.write(json.dumps(jload, indent=4).replace("    ",'\t'))
-
-
+def getHashedPasswwd(filename):
+       with open(filename, "r+") as f:
+        content = f.read()
+        jload = json.loads(content)
+        return jload["mainpasswd"]
 
 
