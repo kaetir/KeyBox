@@ -1,0 +1,18 @@
+{
+	"mainuser": "test1",
+	"mainpasswd": "unSHA256SVP",
+	"entries": [
+		{
+			"application": "app",
+			"username": "user",
+			"nonce": "c\u00f9azjefziefpqdnfpnz\u00e9",
+			"passwd": "cyphertext"
+		},
+		{
+			"application": "compte en banque",
+			"username": "jean thierry",
+			"nonce": "010101011010",
+			"passwd": "cyphertext"
+		}
+	]
+}
