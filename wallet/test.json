@@ -1,0 +1,15 @@
+{
+	"mainuser": "moi",
+	"mainpasswd": "hash",
+	"entries": [
+		{
+			"username": "moi",
+			"nonce": "4be07e21f49f22a467f804578492a4ae",
+			"passwd": "a19714"
+		},
+		{
+			"username": "toi",
+			"passwd": "b711cc"
+		}
+	]
+}
