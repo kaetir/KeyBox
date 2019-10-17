@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--https://www.w3schools.com/w3css/w3css_input.asp-->
+<html>
+
+<head>
+	<title>KeyBox</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.1">
+	<link rel="stylesheet" href="w3.css">
+	<meta charset="utf-8">
+</head>
+
+<body>
+
+	<div class="w3-card-4 w3-padding-32">
+		<div class="w3-container w3-blue-grey w3-center">
+			<h1>Bienvenue sur votre espace de gestion de mots de passes</h1>
+		</div>
+		<form class="w3-content w3-padding-32" method="POST" action="/action.py">
+			<div class="w3-container">
+				<label class="w3-text-blue-grey w3-large"><b>Application</b></label>
+				<input style="width: 95%;" class="w3-input w3-small w3-border w3-light-grey" name="application" type="text" required="required">
+			</div>
+			<div class="w3-container">
+				<label class="w3-text-blue-grey w3-large"><b>Username</b></label>
+				<input style="width: 95%;" class="w3-input w3-small w3-border w3-light-grey" name="name" type="text" required="required">
+			</div>
+			<div class="w3-container">
+				<label class="w3-text-blue-grey w3-large"><b>Password</b></label>
+				<button class="w3-button w3-large w3-text-blue-grey" id="genRngPasswd" type="button"> random </button>
+				<input style="width: 95%;" class="w3-input w3-border w3-light-grey w3-small" name="password" type="password" required="required">
+			</div>
+			<div class="w3-container">
+				<label class="w3-text-blue-grey w3-large"><b>MainPassword</b></label>
+				<input style="width: 95%;" class="w3-input w3-border w3-light-grey w3-small" name="mainpassword" type="password" required="required">
+			</div>
+			<div class="w3-container w3-margin-top">
+				<button class="w3-btn w3-blue-grey w3-small">Register</button>
+			</div>
+
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		document.getElementById("genRngPasswd").addEventListener("click", () => {
+			// Ici, la requête sera émise de façon synchrone.
+			const req = new XMLHttpRequest();
+			req.open('GET', window.location.href + 'randompasswd', false);
+			req.send(null);
+
+			if (req.status === 200) {
+				// si on a une réponse on le met 
+				document.getElementsByName("password")[0].value = req.responseText;
+			} else {
+				console.log("Status de la réponse: %d (%s)", req.status, req.statusText);
+			}
+		})
+	</script>
+
+
+</body>
+
+</html>

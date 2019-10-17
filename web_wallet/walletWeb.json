@@ -1,0 +1,12 @@
+{
+	"mainuser": "thibault",
+	"mainpasswd": "3c71cad6982778650fcecd4f37a34ef4349f6e01adaf3cddcb804856c92096b698411c42c7d68f9d6e380c0b487b4019203956496eaa7cac9ac96fdcf3d63dfd",
+	"entries": [
+		{
+			"application": "Myapp1",
+			"username": "Thib",
+			"nonce": "7b06fae98d3ad75b7296c3d16d674250",
+			"passwd": "3385d78c5fe270bb0424087493e884876c8d7e2eddf8edf70ba8"
+		}
+	]
+}
