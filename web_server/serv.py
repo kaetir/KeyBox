@@ -21,8 +21,10 @@ class S(BaseHTTPRequestHandler):
         self._set_headers()
         if(self.path == "/"):
             self.path = "/index.htm"
-        with open(self.path[1:], "r") as f:
-            self.wfile.write(self._html(f.read()))
+            with open(self.path[1:], "r") as f:
+                self.wfile.write(self._html(f.read()))
+        else:
+            self.wfile.write(self._html("<html><body><h1>404</h1></body></html>"))
 
     def do_HEAD(self):
         self._set_headers()
@@ -31,7 +33,13 @@ class S(BaseHTTPRequestHandler):
         # Doesn't do anything with posted data
         content_length = int(self.headers['Content-Length']) # <--- Gets the size of data
         post_data = self.rfile.read(content_length) # <--- Gets the data itself
-        print(post_data) # <-- Print post data
+        if(self.path == "/action.py"):
+            data = post_data.decode("utf8").split("&") 
+            data = {x.split("=")[0]:x.split("=")[1] for x in data}
+            print(data)
+            
+
+
         self._set_headers()
 
 def run(server_class=HTTPServer, handler_class=S, addr="localhost", port=8000):
