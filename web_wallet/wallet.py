@@ -1,6 +1,6 @@
 
 import mdpJson as walletJson
-from  mdpCypher import *
+from  mdpCypher import hash, mdpCrypt, mdpDecrypt, os
 
 
 def createWallet(filename, username, mainpasswd):
