@@ -1,0 +1,8 @@
+(fp_lib_table
+  (lib (name myfootprint)(type KiCad)(uri "$(KIPRJMOD)/myfootprint.pretty")(options "")(descr ""))
+  (lib (name logo)(type KiCad)(uri "$(KIPRJMOD)/logo")(options "")(descr ""))
+  (lib (name w_conn_misc)(type KiCad)(uri "$(KIPRJMOD)/w_conn_misc.pretty")(options "")(descr ""))
+  (lib (name switches)(type KiCad)(uri "$(KIPRJMOD)/SW_PUSH_SMALL_THT.pretty")(options "")(descr ""))
+  (lib (name i2c_screen)(type KiCad)(uri /home/thibault/Dropbox/CIR4/KeyBox/Elec/PCB/libs/i2c_screen.pretty)(options "")(descr ""))
+  (lib (name boutton)(type KiCad)(uri /home/thibault/Dropbox/CIR4/KeyBox/Elec/PCB/libs/boutton.pretty)(options "")(descr ""))
+)
