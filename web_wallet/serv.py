@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 import argparse
-import genRngPasswd
-import wallet
+import wallet.genRngPasswd
+import wallet.wallet
 import os
 from http.server import HTTPServer, BaseHTTPRequestHandler
 

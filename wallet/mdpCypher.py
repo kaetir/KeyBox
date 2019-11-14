@@ -1,5 +1,4 @@
 
-
 import os
 import bcrypt
 
@@ -19,7 +18,7 @@ def mdpCrypt(mainpasswd, passToCrypt):
     Ciph = Cipher(AES(key), CTR(nonce), default_backend())
     Encryptor = Ciph.encryptor()
     
-    return Encryptor.update(bytes(passToCrypt, "utf8")).hex() , nonce.hex()
+    return Encryptor.update(bytes(passToCrypt, "utf8")).hex(), nonce.hex()
   
 
 # mainpasswd = str of the userpasswd
@@ -33,16 +32,21 @@ def mdpDecrypt(mainpasswd, passToDecrypt, nonce):
     return Decryptor.update(bytes.fromhex(passToDecrypt)).decode("utf8")
 
 
-def hash(toHash):
-    return SHA512.new(bytes(toHash,'utf8'))
+def hash(toHash: str) -> str:
+    """
+    @summary fonction de hash simplifié
+    @param toHash: la chaine en clair
+    @return: le hash digéré
+    """
+    return SHA512.new(bytes(toHash, 'utf8')).hexdigest()
 
 
 if __name__ == "__main__":
     mp = input("your passwd pleas :")
-    if("c" == input("crypt(c) / decrypt(d) : ")):
+    if "c" == input("crypt(c) / decrypt(d) : "):
         uc = input("the thing you want to crypt : ")
         print(mdpCrypt(mp, uc))
     else:
         c = input("the thing you want to decrypt : ")
         n = input("the associate nonce : ")
-        print(mdpDecrypt(mp, c,n ))
+        print(mdpDecrypt(mp, c, n))

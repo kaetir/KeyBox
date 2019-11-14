@@ -1,10 +1,21 @@
-
 import mdpJson as walletJson
 from  mdpCypher import *
 
+"""
 
-def createWallet(filename, username, mainpasswd):
-    walletJson.genNewFile(filename, username, hash(mainpasswd).hexdigest())
+
+"""
+
+
+def createWallet(filename: str, username: str, mainpasswd: str) -> str:
+    """
+    @summary crée le fichier du wallet
+    @param filename: string du path du fichier
+    @param username: object
+    @param mainpasswd: le mot de passe d'ouverture
+    @return la clé de récupération du wallet
+    """
+    walletJson.genNewFile(filename, username, hash(mainpasswd))
 
 
 def getAcount(filename, application, mainpasswd):
@@ -18,7 +29,7 @@ def getAcount(filename, application, mainpasswd):
 def createAcount(filename, application, username, passwd, mainpasswd):
     if(hash(mainpasswd).hexdigest() == walletJson.getHashedPasswwd(filename)):
         [mdpc, nonce] = mdpCrypt(mainpasswd, passwd)
-        walletJson.addEntry(filename,application, username, nonce, mdpc)
+        walletJson.add_entry(filename, application, username, nonce, mdpc)
     else:
         print(hash(mainpasswd).hexdigest())
         print( walletJson.getHashedPasswwd(filename))
