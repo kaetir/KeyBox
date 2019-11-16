@@ -65,7 +65,7 @@
     (mod_edge_width 0.15)
     (mod_text_size 1 1)
     (mod_text_width 0.15)
-    (pad_size 1.9 8)
+    (pad_size 2 7.5)
     (pad_drill 0)
     (pad_to_mask_clearance 0)
     (aux_axis_origin 0 0)
@@ -340,7 +340,7 @@
       (net 2 GND))
   )
 
-  (module Wickerlib:CONN-USB-A-PCB-TRACES (layer F.Cu) (tedit 5DD0662E) (tstamp 5DCE9174)
+  (module Wickerlib:CONN-USB-A-PCB-TRACES (layer F.Cu) (tedit 5DCEC595) (tstamp 5DCE9174)
     (at 135.82 88.87 270)
     (attr virtual)
     (fp_text reference J2 (at 0.13 -7.85 90) (layer F.SilkS) hide

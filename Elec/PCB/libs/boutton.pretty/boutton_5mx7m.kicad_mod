@@ -1,4 +1,4 @@
-(module boutton (layer F.Cu) (tedit 5DCE6645)
+(module boutton_5mx7m (layer F.Cu) (tedit 5DCE6645)
   (fp_text reference SW** (at 0 -3.81) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )

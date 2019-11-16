@@ -1,6 +1,24 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
+# boutton_5mx5m
+#
+DEF boutton_5mx5m SW** 0 40 Y Y 1 F N
+F0 "SW**" -150 150 50 H V C CNN
+F1 "boutton_5mx5m" -150 -150 50 H V C CNN
+F2 "" 0 -100 50 H I C CNN
+F3 "" 0 -100 50 H I C CNN
+DRAW
+S -300 100 50 -100 0 1 0 N
+P 2 0 1 0 -200 0 -250 0 N
+P 2 0 1 0 -200 0 -50 50 N
+P 2 0 1 0 0 0 -50 0 N
+X SW1 1 0 0 157 R 50 50 1 1 B
+X SW2 2 -250 0 157 L 50 50 1 1 B
+X 3 3 -200 -100 100 R 50 50 1 1 N N
+ENDDRAW
+ENDDEF
+#
 # boutton_5mx6m
 #
 DEF boutton_5mx6m SW** 0 40 Y Y 1 F N
@@ -15,7 +33,6 @@ P 2 0 1 0 -200 0 -50 50 N
 P 2 0 1 0 0 0 -50 0 N
 X SW1 1 0 0 157 R 50 50 1 1 B
 X SW2 2 -250 0 157 L 50 50 1 1 B
-X 3 ~ -200 -100 100 R 50 50 1 1 N N
 ENDDRAW
 ENDDEF
 #

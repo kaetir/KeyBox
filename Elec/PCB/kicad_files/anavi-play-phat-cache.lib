@@ -44,11 +44,11 @@ X GND 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# boutton_boutton_5mx6m
+# boutton_boutton_5mx5m
 #
-DEF boutton_boutton_5mx6m SW** 0 40 Y Y 1 F N
+DEF boutton_boutton_5mx5m SW** 0 40 Y Y 1 F N
 F0 "SW**" -150 150 50 H V C CNN
-F1 "boutton_boutton_5mx6m" -150 -150 50 H V C CNN
+F1 "boutton_boutton_5mx5m" -150 -150 50 H V C CNN
 F2 "" 0 -100 50 H I C CNN
 F3 "" 0 -100 50 H I C CNN
 DRAW
@@ -58,7 +58,7 @@ P 2 0 1 0 -200 0 -50 50 N
 P 2 0 1 0 0 0 -50 0 N
 X SW1 1 0 0 157 R 50 50 1 1 B
 X SW2 2 -250 0 157 L 50 50 1 1 B
-X 3 ~ -200 -100 100 R 50 50 1 1 N N
+X 3 3 -200 -100 100 R 50 50 1 1 N N
 ENDDRAW
 ENDDEF
 #
