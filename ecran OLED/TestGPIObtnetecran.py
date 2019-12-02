@@ -11,10 +11,8 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
  
-os.system("sudo rmmod spi_bcm2835 && sudo modprobe spi_bcm2835")
-time.sleep(2)
+pinBtn=[16,19,26,21,20,27]
 
-pinBtn=[16,19,20,21,26]
 
 
 GPIO.setmode(GPIO.BCM)
@@ -23,11 +21,12 @@ GPIO.setmode(GPIO.BCM)
 for i in pinBtn:
     GPIO.setup(pinBtn, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-disp = Adafruit_SSD1306.SSD1306_128_64(rst=24, dc=23, spi=SPI.SpiDev(0, 0, max_speed_hz=8000000))
+disp = Adafruit_SSD1306.SSD1306_128_32(rst=24) 
 font = ImageFont.load_default()
 
 nbCols = 21
-nbLign = 6
+nbLign = 3
+
 lignes= [ i*10 for i in range(nbLign)]
 colones = [i * 6 for i in range(nbCols)]
  

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/KeyBox.iml" filepath="$PROJECT_DIR$/.idea/KeyBox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/sshfskeybox.iml" filepath="$PROJECT_DIR$/.idea/sshfskeybox.iml" />
     </modules>
   </component>
 </project>
