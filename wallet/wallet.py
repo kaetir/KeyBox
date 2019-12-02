@@ -19,7 +19,8 @@ def createWallet(filename: str, username: str, mainpasswd: str) -> str:
 
 
 def getAcount(filename, application, mainpasswd):
-    if(hash(mainpasswd).hexdigest() == walletJson.getHashedPasswwd(filename)):
+    # TODO
+    if(walletJson.):
         entry = walletJson.getEntry(filename,application)
         entry["passwd"] = mdpDecrypt(mainpasswd, entry["passwd"], entry["nonce"])
         return entry
