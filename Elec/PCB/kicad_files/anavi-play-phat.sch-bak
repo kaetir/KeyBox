@@ -224,10 +224,10 @@ Wire Wire Line
 Wire Wire Line
 	5700 5650 6900 5650
 $Comp
-L boutton:boutton_5mx5m SW_DWN
+L boutton:boutton_5mx5m SW_DWN1
 U 1 1 5DD1EB2C
 P 7150 3800
-F 0 "SW_DWN" H 7025 3973 50  0000 C CNN
+F 0 "SW_DWN1" H 7025 3973 50  0000 C CNN
 F 1 "boutton_5mx5m" H 7025 3974 50  0001 C CNN
 F 2 "" H 7150 3700 50  0001 C CNN
 F 3 "" H 7150 3700 50  0001 C CNN
@@ -235,10 +235,10 @@ F 3 "" H 7150 3700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L boutton:boutton_5mx5m SW_UP
+L boutton:boutton_5mx5m SW_UP1
 U 1 1 5DD1F4E0
 P 7150 4150
-F 0 "SW_UP" H 7025 4323 50  0000 C CNN
+F 0 "SW_UP1" H 7025 4323 50  0000 C CNN
 F 1 "boutton_5mx5" H 7025 4324 50  0001 C CNN
 F 2 "" H 7150 4050 50  0001 C CNN
 F 3 "" H 7150 4050 50  0001 C CNN
@@ -246,10 +246,10 @@ F 3 "" H 7150 4050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L boutton:boutton_5mx5m SW_L
+L boutton:boutton_5mx5m SW_L1
 U 1 1 5DD1FF57
 P 7150 4550
-F 0 "SW_L" H 7025 4723 50  0000 C CNN
+F 0 "SW_L1" H 7025 4723 50  0000 C CNN
 F 1 "boutton_5mx5m" H 7025 4724 50  0001 C CNN
 F 2 "" H 7150 4450 50  0001 C CNN
 F 3 "" H 7150 4450 50  0001 C CNN
@@ -257,10 +257,10 @@ F 3 "" H 7150 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L boutton:boutton_5mx5m SW_R
+L boutton:boutton_5mx5m SW_R1
 U 1 1 5DD20A89
 P 7150 4900
-F 0 "SW_R" H 7025 5073 50  0000 C CNN
+F 0 "SW_R1" H 7025 5073 50  0000 C CNN
 F 1 "boutton_5mx5m" H 7025 5074 50  0001 C CNN
 F 2 "" H 7150 4800 50  0001 C CNN
 F 3 "" H 7150 4800 50  0001 C CNN
@@ -268,10 +268,10 @@ F 3 "" H 7150 4800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L boutton:boutton_5mx5m SW_OK
+L boutton:boutton_5mx5m SW_OK1
 U 1 1 5DD212C2
 P 7150 5300
-F 0 "SW_OK" H 7025 5473 50  0000 C CNN
+F 0 "SW_OK1" H 7025 5473 50  0000 C CNN
 F 1 "boutton_5mx5m" H 7025 5474 50  0001 C CNN
 F 2 "" H 7150 5200 50  0001 C CNN
 F 3 "" H 7150 5200 50  0001 C CNN
@@ -279,14 +279,26 @@ F 3 "" H 7150 5200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L boutton:boutton_5mx5m SW_BCK
+L boutton:boutton_5mx5m SW_BCK1
 U 1 1 5DD21E0C
 P 7150 5650
-F 0 "SW_BCK" H 7025 5823 50  0000 C CNN
+F 0 "SW_BCK1" H 7025 5823 50  0000 C CNN
 F 1 "boutton_5mx5m" H 7025 5824 50  0001 C CNN
 F 2 "" H 7150 5550 50  0001 C CNN
 F 3 "" H 7150 5550 50  0001 C CNN
 	1    7150 5650
 	1    0    0    -1  
 $EndComp
+Text GLabel 8950 2850 0    50   Input ~ 0
+D+
+Text GLabel 8950 3050 0    50   Input ~ 0
+D-
+Wire Wire Line
+	8950 2850 9350 2850
+Wire Wire Line
+	8950 3050 9350 3050
+Text Label 9050 2850 0    50   ~ 0
+D+
+Text Label 9050 3050 0    50   ~ 0
+D-
 $EndSCHEMATC
