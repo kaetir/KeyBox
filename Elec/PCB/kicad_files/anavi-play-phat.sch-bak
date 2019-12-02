@@ -289,16 +289,4 @@ F 3 "" H 7150 5550 50  0001 C CNN
 	1    7150 5650
 	1    0    0    -1  
 $EndComp
-Text GLabel 8950 2850 0    50   Input ~ 0
-D+
-Text GLabel 8950 3050 0    50   Input ~ 0
-D-
-Wire Wire Line
-	8950 2850 9350 2850
-Wire Wire Line
-	8950 3050 9350 3050
-Text Label 9050 2850 0    50   ~ 0
-D+
-Text Label 9050 3050 0    50   ~ 0
-D-
 $EndSCHEMATC
