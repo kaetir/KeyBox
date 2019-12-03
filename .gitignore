@@ -41,7 +41,7 @@
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
 # .idea/modules.xml
-# .idea/*.iml
+.idea/*.iml
 # .idea/modules
 # *.iml
 # *.ipr
@@ -82,7 +82,7 @@ fabric.properties
 ### PyCharm Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-# *.iml
+#*.iml
 # modules.xml
 # .idea/misc.xml
 # *.ipr
@@ -203,3 +203,4 @@ dmypy.json
 .pyre/
 
 # End of https://www.gitignore.io/api/code,python,pycharm
+/venv/

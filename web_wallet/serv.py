@@ -36,7 +36,7 @@ class S(BaseHTTPRequestHandler):
         # call a l'api pour un passwd aléatoire
         elif(self.path == "/randompasswd"):
             self._set_headers()
-            self.wfile.write(genRngPasswd.randomString(20).encode("utf8"))
+            self.wfile.write(genRngPasswd.random_string(20).encode("utf8"))
         # on renvoie le json
         elif(self.path == "/view"):
             self.send_response(200)
@@ -69,8 +69,8 @@ class S(BaseHTTPRequestHandler):
             data = {x.split("=")[0]:x.split("=")[1] for x in data}
             # le wallet n'existe pas
             if not os.path.isfile(fileWallet):
-                if all(elem in  list(data.keys())  for elem in ["name", "mainpasswd"]) :
-                    wallet.createWallet(fileWallet, data["name"], data["mainpasswd"] )
+                if all(elem in  list(data.keys())  for elem in ["name", "main_password"]) :
+                    wallet.createWallet(fileWallet, data["name"], data["main_password"] )
                     self.send_response(302)
                     self.send_header('Refresh', "3; url=/")
                     self.end_headers()
