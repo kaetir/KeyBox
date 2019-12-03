@@ -1,4 +1,4 @@
-484523089843228
+486099885668228
 Connector_USB
 USB3_A_Molex_48393-001
 USB 3.0, type A, right angle (http://www.molex.com/pdm_docs/sd/483930003_sd.pdf)
@@ -1959,6 +1959,13 @@ pin header
 0
 4
 4
+myfootprint
+KEYBOX
+
+
+0
+0
+0
 myfootprint
 KLEMA_1x3
 
