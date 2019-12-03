@@ -47,24 +47,21 @@ F 3 "" H 3450 1800 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 NoConn ~ 5350 4850
-NoConn ~ 5350 4750
-NoConn ~ 5350 4650
 NoConn ~ 5350 3750
 NoConn ~ 5350 2900
 NoConn ~ 5350 3000
-NoConn ~ 5350 4150
 NoConn ~ 5350 3850
 NoConn ~ 5350 2600
 NoConn ~ 5350 2700
 $Comp
 L anavi-play-phat-rescue:GND-power #PWR016
 U 1 1 5B2D1552
-P 7600 5300
-F 0 "#PWR016" H 7600 5050 50  0001 C CNN
-F 1 "GND" H 7600 5150 50  0000 C CNN
-F 2 "" H 7600 5300 50  0001 C CNN
-F 3 "" H 7600 5300 50  0001 C CNN
-	1    7600 5300
+P 6350 3700
+F 0 "#PWR016" H 6350 3450 50  0001 C CNN
+F 1 "GND" H 6350 3550 50  0000 C CNN
+F 2 "" H 6350 3700 50  0001 C CNN
+F 3 "" H 6350 3700 50  0001 C CNN
+	1    6350 3700
 	0    -1   -1   0   
 $EndComp
 NoConn ~ 5350 2800
@@ -151,141 +148,111 @@ F 3 "" H 4400 1700 60  0000 C CNN
 	1    4400 1700
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5350 3950 5950 3950
-Wire Wire Line
-	5950 3950 5950 3800
-Wire Wire Line
-	5950 3800 6900 3800
-Wire Wire Line
-	5350 4250 6100 4250
-Wire Wire Line
-	6100 4250 6100 4150
-Wire Wire Line
-	6100 4150 6900 4150
-Wire Wire Line
-	5350 4950 5850 4950
-Wire Wire Line
-	5850 4950 5850 5300
-Wire Wire Line
-	5850 5300 6900 5300
-Wire Wire Line
-	5350 4350 6250 4350
-Wire Wire Line
-	6250 4350 6250 4550
-Wire Wire Line
-	6250 4550 6900 4550
-Wire Wire Line
-	5350 4450 6000 4450
-Wire Wire Line
-	6000 4450 6000 4900
-Wire Wire Line
-	6000 4900 6900 4900
-Wire Wire Line
-	7150 3800 7350 3800
-Wire Wire Line
-	7350 3800 7350 4150
-Wire Wire Line
-	7350 5300 7600 5300
-Wire Wire Line
-	7150 5300 7350 5300
-Connection ~ 7350 5300
-Wire Wire Line
-	7150 4900 7350 4900
-Connection ~ 7350 4900
-Wire Wire Line
-	7350 4900 7350 5300
-Wire Wire Line
-	7150 4550 7350 4550
-Connection ~ 7350 4550
-Wire Wire Line
-	7350 4550 7350 4900
-Wire Wire Line
-	7150 4150 7350 4150
-Connection ~ 7350 4150
-Wire Wire Line
-	7350 4150 7350 4550
-NoConn ~ 5350 4050
-NoConn ~ 5350 4550
-NoConn ~ 5350 3450
 NoConn ~ 5350 3550
 NoConn ~ 5350 3650
 NoConn ~ 3450 3700
 NoConn ~ 3450 3800
 Wire Wire Line
-	7150 5650 7350 5650
+	6350 3450 6350 3700
+$Comp
+L boutton:boutton_6mx6m UP1
+U 1 1 5DE76847
+P 6350 4050
+F 0 "UP1" H 6225 4223 50  0000 C CNN
+F 1 "boutton_6mx6m" H 6200 3900 50  0001 C CNN
+F 2 "boutton:boutton__6mx6m" H 6350 3950 50  0001 C CNN
+F 3 "" H 6350 3950 50  0001 C CNN
+	1    6350 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L boutton:boutton_6mx6m L1
+U 1 1 5DE77762
+P 6350 5050
+F 0 "L1" H 6225 5223 50  0000 C CNN
+F 1 "boutton_6mx6m" H 6200 4900 50  0001 C CNN
+F 2 "boutton:boutton__6mx6m" H 6350 4950 50  0001 C CNN
+F 3 "" H 6350 4950 50  0001 C CNN
+	1    6350 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L boutton:boutton_6mx6m OK1
+U 1 1 5DE79BAE
+P 6350 4550
+F 0 "OK1" H 6225 4723 50  0000 C CNN
+F 1 "boutton_6mx6m" H 6200 4400 50  0001 C CNN
+F 2 "boutton:boutton__6mx6m" H 6350 4450 50  0001 C CNN
+F 3 "" H 6350 4450 50  0001 C CNN
+	1    6350 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L boutton:boutton_6mx6m R1
+U 1 1 5DE7B850
+P 6350 3450
+F 0 "R1" H 6225 3623 50  0000 C CNN
+F 1 "boutton_6mx6m" H 6200 3300 50  0001 C CNN
+F 2 "boutton:boutton__6mx6m" H 6350 3350 50  0001 C CNN
+F 3 "" H 6350 3350 50  0001 C CNN
+	1    6350 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L boutton:boutton_6mx6m DWN1
+U 1 1 5DE7C4F2
+P 6350 4300
+F 0 "DWN1" H 6225 4473 50  0000 C CNN
+F 1 "boutton_6mx6m" H 6200 4150 50  0001 C CNN
+F 2 "boutton:boutton__6mx6m" H 6350 4200 50  0001 C CNN
+F 3 "" H 6350 4200 50  0001 C CNN
+	1    6350 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L boutton:boutton_6mx6m BCK1
+U 1 1 5DE7DEC3
+P 6350 4800
+F 0 "BCK1" H 6225 4973 50  0000 C CNN
+F 1 "boutton_6mx6m" H 6200 4650 50  0001 C CNN
+F 2 "boutton:boutton__6mx6m" H 6350 4700 50  0001 C CNN
+F 3 "" H 6350 4700 50  0001 C CNN
+	1    6350 4800
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	7350 5650 7350 5300
+	5350 3450 6100 3450
 Wire Wire Line
-	5350 5050 5700 5050
+	5350 4050 6100 4050
 Wire Wire Line
-	5700 5050 5700 5650
+	5350 4150 5700 4150
 Wire Wire Line
-	5700 5650 6900 5650
-$Comp
-L boutton:boutton_5mx5m SW_DWN1
-U 1 1 5DD1EB2C
-P 7150 3800
-F 0 "SW_DWN1" H 7025 3973 50  0000 C CNN
-F 1 "boutton_5mx5m" H 7025 3974 50  0001 C CNN
-F 2 "boutton:boutton__5mx5m" H 7150 3700 50  0001 C CNN
-F 3 "" H 7150 3700 50  0001 C CNN
-	1    7150 3800
-	1    0    0    -1  
-$EndComp
-$Comp
-L boutton:boutton_5mx5m SW_UP1
-U 1 1 5DD1F4E0
-P 7150 4150
-F 0 "SW_UP1" H 7025 4323 50  0000 C CNN
-F 1 "boutton_5mx5" H 7025 4324 50  0001 C CNN
-F 2 "boutton:boutton__5mx5m" H 7150 4050 50  0001 C CNN
-F 3 "" H 7150 4050 50  0001 C CNN
-	1    7150 4150
-	1    0    0    -1  
-$EndComp
-$Comp
-L boutton:boutton_5mx5m SW_L1
-U 1 1 5DD1FF57
-P 7150 4550
-F 0 "SW_L1" H 7025 4723 50  0000 C CNN
-F 1 "boutton_5mx5m" H 7025 4724 50  0001 C CNN
-F 2 "boutton:boutton__5mx5m" H 7150 4450 50  0001 C CNN
-F 3 "" H 7150 4450 50  0001 C CNN
-	1    7150 4550
-	1    0    0    -1  
-$EndComp
-$Comp
-L boutton:boutton_5mx5m SW_R1
-U 1 1 5DD20A89
-P 7150 4900
-F 0 "SW_R1" H 7025 5073 50  0000 C CNN
-F 1 "boutton_5mx5m" H 7025 5074 50  0001 C CNN
-F 2 "boutton:boutton__5mx5m" H 7150 4800 50  0001 C CNN
-F 3 "" H 7150 4800 50  0001 C CNN
-	1    7150 4900
-	1    0    0    -1  
-$EndComp
-$Comp
-L boutton:boutton_5mx5m SW_OK1
-U 1 1 5DD212C2
-P 7150 5300
-F 0 "SW_OK1" H 7025 5473 50  0000 C CNN
-F 1 "boutton_5mx5m" H 7025 5474 50  0001 C CNN
-F 2 "boutton:boutton__5mx5m" H 7150 5200 50  0001 C CNN
-F 3 "" H 7150 5200 50  0001 C CNN
-	1    7150 5300
-	1    0    0    -1  
-$EndComp
-$Comp
-L boutton:boutton_5mx5m SW_BCK1
-U 1 1 5DD21E0C
-P 7150 5650
-F 0 "SW_BCK1" H 7025 5823 50  0000 C CNN
-F 1 "boutton_5mx5m" H 7025 5824 50  0001 C CNN
-F 2 "boutton:boutton__5mx5m" H 7150 5550 50  0001 C CNN
-F 3 "" H 7150 5550 50  0001 C CNN
-	1    7150 5650
-	1    0    0    -1  
-$EndComp
+	5700 4150 5700 4300
+Wire Wire Line
+	5700 4300 6100 4300
+Wire Wire Line
+	5350 4550 6100 4550
+Wire Wire Line
+	5350 4650 5650 4650
+Wire Wire Line
+	5650 4650 5650 4800
+Wire Wire Line
+	5650 4800 6100 4800
+Wire Wire Line
+	5350 5050 6100 5050
+Connection ~ 6350 4050
+Wire Wire Line
+	6350 4050 6350 4300
+Connection ~ 6350 4300
+Wire Wire Line
+	6350 4300 6350 4550
+Connection ~ 6350 4550
+Wire Wire Line
+	6350 4550 6350 4800
+Connection ~ 6350 4800
+Wire Wire Line
+	6350 4800 6350 5050
+Connection ~ 6350 3700
+Wire Wire Line
+	6350 3700 6350 4050
 $EndSCHEMATC

@@ -1,4 +1,4 @@
-481372329288228
+484523089843228
 Connector_USB
 USB3_A_Molex_48393-001
 USB 3.0, type A, right angle (http://www.molex.com/pdm_docs/sd/483930003_sd.pdf)
@@ -1925,7 +1925,21 @@ boutton__5mx5m
 4
 3
 boutton
+boutton__5mx5m_copy
+
+
+0
+4
+3
+boutton
 boutton__5mx6m
+
+
+0
+4
+2
+boutton
+boutton__6mx6m
 
 
 0
