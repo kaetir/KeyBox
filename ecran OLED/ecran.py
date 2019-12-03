@@ -12,7 +12,7 @@ class Ecran:
         
     nbCols = 21
     nbLign = 3
-    lignes = [i * 10 for i in range(nbLign)]
+    lignes= [i*10 for i in range(nbLign)]
     colones = [i * 6 for i in range(nbCols)]
 
     def __init__(self):
@@ -20,7 +20,6 @@ class Ecran:
         self.disp.begin()
         self.disp.clear()
         self.disp.display()
-
         self.font = ImageFont.load_default()
         self.image = Image.new('1', (self.disp.width, self.disp.height))
         self.draw = ImageDraw.Draw(self.image)
@@ -41,4 +40,10 @@ class Ecran:
         self.draw= ImageDraw.Draw(self.image)
         self.disp.clear()
         self.disp.display()
+    
+    
+    def curs(self,x,y):
+        # x et y sont en colones lignes
+        self.draw.rectangle((self.colones[x],self.lignes[y],self.colones[x]+6,self.lignes[y]+8), outline=1, fill=255)
+        self.disp.image(self.image)
 
