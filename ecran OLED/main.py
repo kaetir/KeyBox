@@ -18,14 +18,23 @@ monEcran.draw_text("TEST1", 0, 1)
 monEcran.draw_text("TEST2", 1, 6)
 """
 
-#monMenu.print()
+
+
 menuLogin.print()
+
+"""
+while (monMenu.select()==1):
+    monMenu.print()
+    while monMenu.select()==0:
+        menuLogin.print()
+"""
+    
 
 
 # on a bien que le deuxieme texte qui d'affiche
-monEcran.display()
 
-mesBoutons.test_mapping() # test de mapping des boutons
 
+#mesBoutons.test_mapping() # test de mapping des boutons
+monMenu.select()
 
 
