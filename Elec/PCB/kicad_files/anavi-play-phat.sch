@@ -155,10 +155,10 @@ NoConn ~ 3450 3800
 Wire Wire Line
 	6350 3450 6350 3700
 $Comp
-L boutton:boutton_6mx6m UP
+L boutton:boutton_6mx6m UP1
 U 1 1 5DE76847
 P 6350 4050
-F 0 "UP" H 6225 4223 50  0000 C CNN
+F 0 "UP1" H 6225 4223 50  0000 C CNN
 F 1 "boutton_6mx6m" H 6200 3900 50  0001 C CNN
 F 2 "boutton:boutton__6mx6m" H 6350 3950 50  0001 C CNN
 F 3 "" H 6350 3950 50  0001 C CNN
@@ -166,10 +166,10 @@ F 3 "" H 6350 3950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L boutton:boutton_6mx6m L
+L boutton:boutton_6mx6m L1
 U 1 1 5DE77762
 P 6350 5050
-F 0 "L" H 6225 5223 50  0000 C CNN
+F 0 "L1" H 6225 5223 50  0000 C CNN
 F 1 "boutton_6mx6m" H 6200 4900 50  0001 C CNN
 F 2 "boutton:boutton__6mx6m" H 6350 4950 50  0001 C CNN
 F 3 "" H 6350 4950 50  0001 C CNN
@@ -177,10 +177,10 @@ F 3 "" H 6350 4950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L boutton:boutton_6mx6m OK
+L boutton:boutton_6mx6m OK1
 U 1 1 5DE79BAE
 P 6350 4550
-F 0 "OK" H 6225 4723 50  0000 C CNN
+F 0 "OK1" H 6225 4723 50  0000 C CNN
 F 1 "boutton_6mx6m" H 6200 4400 50  0001 C CNN
 F 2 "boutton:boutton__6mx6m" H 6350 4450 50  0001 C CNN
 F 3 "" H 6350 4450 50  0001 C CNN
@@ -188,10 +188,10 @@ F 3 "" H 6350 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L boutton:boutton_6mx6m R
+L boutton:boutton_6mx6m R1
 U 1 1 5DE7B850
 P 6350 3450
-F 0 "R" H 6225 3623 50  0000 C CNN
+F 0 "R1" H 6225 3623 50  0000 C CNN
 F 1 "boutton_6mx6m" H 6200 3300 50  0001 C CNN
 F 2 "boutton:boutton__6mx6m" H 6350 3350 50  0001 C CNN
 F 3 "" H 6350 3350 50  0001 C CNN
@@ -199,10 +199,10 @@ F 3 "" H 6350 3350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L boutton:boutton_6mx6m DWN
+L boutton:boutton_6mx6m DWN1
 U 1 1 5DE7C4F2
 P 6350 4300
-F 0 "DWN" H 6225 4473 50  0000 C CNN
+F 0 "DWN1" H 6225 4473 50  0000 C CNN
 F 1 "boutton_6mx6m" H 6200 4150 50  0001 C CNN
 F 2 "boutton:boutton__6mx6m" H 6350 4200 50  0001 C CNN
 F 3 "" H 6350 4200 50  0001 C CNN
@@ -210,10 +210,10 @@ F 3 "" H 6350 4200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L boutton:boutton_6mx6m BCK
+L boutton:boutton_6mx6m BCK1
 U 1 1 5DE7DEC3
 P 6350 4800
-F 0 "BCK" H 6225 4973 50  0000 C CNN
+F 0 "BCK1" H 6225 4973 50  0000 C CNN
 F 1 "boutton_6mx6m" H 6200 4650 50  0001 C CNN
 F 2 "boutton:boutton__6mx6m" H 6350 4700 50  0001 C CNN
 F 3 "" H 6350 4700 50  0001 C CNN
