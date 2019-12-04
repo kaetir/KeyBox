@@ -22,19 +22,25 @@ class Menu():
         self.title = data[0]
         self.entries = data[1:]
 
-    def print(self, counter=-1) -> None:
+    def print(self, counter=0) -> None:
         """
         @summary affiche le menu
-        @param counter: int -> position du curseur si -1 pas affiché
+        @param counter: int -> position du curseur si 0 affiche le nom du menu affiché
         """
         self.ecran.clear_scr()
-        self.ecran.draw_text(self.title, 0)
-        self.ecran.draw_text(">",3)
-        for i in range(len(self.entries)):
-            self.ecran.draw_text(str(i+1) + ". " + self.entries[i], i + 1)
-        if counter >= 0:
-            self.ecran.curs(1,counter)
+        if counter == 0:
+            self.ecran.draw_text(self.title, 0)
+            self.ecran.draw_text(str((counter+1)%len(self.entries)) + "> " +self.entries[counter],1 )
+            self.ecran.draw_text(str(counter+2) + ". " +self.entries[counter+1],2 )
+        else:
+            for i in range(self.ecran.nbLign):
+                elmt =  self.entries[(counter+i)%len(self.entries)]
+                if i == self.ecran.nbLign // 2:
+                    self.ecran.draw_text(str(counter%(len(self.entries)+1)+i) + "> " + elmt,1 )
+                else:
+                    self.ecran.draw_text(str(counter%(len(self.entries)+1)+i) + ". " + elmt,i )
         self.ecran.display()
+            
     
     
     def select(self) -> int:
@@ -46,19 +52,21 @@ class Menu():
         self.print()
         counter=0
         while True:
-            if self.boutons.getStatus("UP")==False:
+            if self.boutons.getStatus("DOWN")==False:
                 counter+=1
-                self.print(counter)
-                while self.boutons.getStatus("UP")==False:
-                    self.boutons.getStatus("UP")
-                
-            elif self.boutons.getStatus("DOWN")==False:
-                counter-=1
+                counter %= len(self.entries)
                 self.print(counter)
                 while self.boutons.getStatus("DOWN")==False:
                     self.boutons.getStatus("DOWN")
+                
+            elif self.boutons.getStatus("UP")==False:
+                counter-=1
+                if counter < 0:
+                    counter = len(self.entries)
+                self.print(counter)
+                while self.boutons.getStatus("UP")==False:
+                    self.boutons.getStatus("UP")
             elif self.boutons.getStatus("OK")==False :
-                return counter
+                return counter+1
             elif self.boutons.getStatus("BACK")==False:
-                counter=-1
-                return counter
+                return -1

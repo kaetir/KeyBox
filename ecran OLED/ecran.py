@@ -9,7 +9,7 @@ from PIL import ImageFont
 
 
 class Ecran:
-        
+    nb=0
     nbCols = 21
     nbLign = 3
     lignes= [i*10 for i in range(nbLign)]
@@ -44,6 +44,15 @@ class Ecran:
     
     def curs(self,x,y):
         # x et y sont en colones lignes
-        self.draw.rectangle((self.colones[x],self.lignes[y],self.colones[x]+6,self.lignes[y]+8), outline=1, fill=255)
-        self.disp.image(self.image)
+        if y < self.nbLign:
+            self.draw_text(">", x, y)
+            self.disp.image(self.image)
+            #nb+=1
 
+
+            
+if __name__ == "__main__":
+    monEcran = Ecran()
+    monEcran.draw_text("ta maman", 0,0)
+    monEcran.display()
+    
