@@ -29,13 +29,15 @@ while (monMenu.select()==1):
         menuLogin.print()
 """
     
-
+monMenu.selectAlphabet()
 
 # on a bien que le deuxieme texte qui d'affiche
 
 
 #mesBoutons.test_mapping()
 #test de mapping des boutons
-print(monMenu.entries[monMenu.select()])
+
+#Menu des comptes avec sélection du compte
+#print(monMenu.entries[monMenu.select()])
 
 

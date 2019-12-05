@@ -1,12 +1,10 @@
 from boutons import Boutons
 from ecran import Ecran
-
-
-
+import string
 
 class Menu():
 
-    def __init__(self, ecran: Ecran, boutons: Boutons, fichier: str ="fichier.txt") -> None:
+    def __init__(self, ecran: Ecran, boutons: Boutons, fichier: str ="Comptes.txt") -> None:
         """
         @summary constructeur
         @param ecran: Ecran -> réference sur l'écran
@@ -40,7 +38,14 @@ class Menu():
                 else:
                     self.ecran.draw_text(str(counter%(len(self.entries)+1)+i) + ". " + elmt,i )
         self.ecran.display()
-            
+        
+    def alphabet(self, counterAlphabet=0) -> None:
+        self.ecran.clear_scr()
+        self.ecran.draw_text("*",0,(self.ecran.nbCols-1)//2)
+        for i in range(self.ecran.nbCols):
+            elmt =  string.ascii_letters[(counterAlphabet+i)%len(string.ascii_letters)]
+            self.ecran.draw_text(elmt,1,i)
+        self.ecran.display()
     
     
     def select(self) -> int:
@@ -68,5 +73,29 @@ class Menu():
                     self.boutons.getStatus("UP")
             elif self.boutons.getStatus("OK")==False :
                 return counter+1
+            elif self.boutons.getStatus("BACK")==False:
+                return -1
+        
+    def selectAlphabet(self):
+        self.alphabet()
+        counterAlphabet=0
+        while True:
+            if self.boutons.getStatus("RIGHT")==False:
+                    counterAlphabet+=1
+                    counterAlphabet %= len(string.ascii_letters)
+                    self.alphabet(counterAlphabet)
+                    while self.boutons.getStatus("RIGHT")==False:
+                        self.boutons.getStatus("RIGHT")
+                    
+            elif self.boutons.getStatus("LEFT")==False:
+                counterAlphabet-=1
+                if counterAlphabet < 0:
+                   counterAlphabet = len(string.ascii_letters)
+                self.alphabet(counterAlphabet)
+                while self.boutons.getStatus("LEFT")==False:
+                    self.boutons.getStatus("LEFT")
+            elif self.boutons.getStatus("OK")==False:
+                print(string.ascii_letters[counterAlphabet+(self.ecran.nbCols//2)])
+                return counterAlphabet+(self.ecran.nbCols//2)
             elif self.boutons.getStatus("BACK")==False:
                 return -1
