@@ -1,4 +1,4 @@
-
+import time
 import RPi.GPIO as GPIO
 
 class Boutons:
@@ -41,6 +41,17 @@ class Boutons:
         else:
             print("bad index")
 
+    def while_pressed(self, button: str, timeout: int=500):
+        """
+        @summary bloque tant que le bouton est pressé ou que le timeout n'est pas passé
+        @param bouton: str -> string du nom du bouton cf var mapping
+        @param timeout: int -> milisecondes avant de reconsidéré un appui
+        """
+        t0 = int(time.time_ns())
+        while int(time.time_ns()) < int(t0 + 1000000*timeout):
+            self.getState()
+            if self.status[self.mapping[button]]:
+                return
     
     def test_mapping(self):
         """
