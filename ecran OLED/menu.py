@@ -3,6 +3,8 @@ from ecran import Ecran
 import string
 
 class Menu():
+    
+    my_alphabet = string.printable.replace(string.whitespace,"")
 
     def __init__(self, ecran: Ecran, boutons: Boutons, fichier: str ="Comptes.txt") -> None:
         """
@@ -19,6 +21,7 @@ class Menu():
         data = content.split("\n")
         self.title = data[0]
         self.entries = data[1:]
+        self.saisie = []
 
     def print(self, counter=0) -> None:
         """
@@ -41,10 +44,14 @@ class Menu():
         
     def alphabet(self, counterAlphabet=0) -> None:
         self.ecran.clear_scr()
-        self.ecran.draw_text("*",0,(self.ecran.nbCols-1)//2)
+
+        self.ecran.draw_text("v",0,(self.ecran.nbCols-1)//2)
         for i in range(self.ecran.nbCols):
-            elmt =  string.ascii_letters[(counterAlphabet+i)%len(string.ascii_letters)]
+            elmt =  self.my_alphabet[(counterAlphabet+i)%len(self.my_alphabet)]
             self.ecran.draw_text(elmt,1,i)
+        for l in self.saisie:
+            self.ecran.draw_text(l,2,self.saisie.index(l))
+        
         self.ecran.display()
     
     
@@ -76,26 +83,42 @@ class Menu():
             elif self.boutons.getStatus("BACK")==False:
                 return -1
         
-    def selectAlphabet(self):
+    def selectAlphabet(self) ->None:
         self.alphabet()
+        position=0
         counterAlphabet=0
         while True:
+            
             if self.boutons.getStatus("RIGHT")==False:
-                    counterAlphabet+=1
-                    counterAlphabet %= len(string.ascii_letters)
-                    self.alphabet(counterAlphabet)
-                    while self.boutons.getStatus("RIGHT")==False:
-                        self.boutons.getStatus("RIGHT")
-                    
+                counterAlphabet+=1
+                counterAlphabet %= len(string.ascii_letters)
+                self.boutons.while_pressed("RIGHT")
+                
             elif self.boutons.getStatus("LEFT")==False:
                 counterAlphabet-=1
                 if counterAlphabet < 0:
-                   counterAlphabet = len(string.ascii_letters)
-                self.alphabet(counterAlphabet)
-                while self.boutons.getStatus("LEFT")==False:
-                    self.boutons.getStatus("LEFT")
+                   counterAlphabet = len(self.my_alphabet)
+                self.boutons.while_pressed("LEFT")
+                    
+            elif self.boutons.getStatus("UP")==False:
+                counterAlphabet+=len(string.ascii_letters)//2
+                counterAlphabet %= len(string.ascii_letters)
+                self.boutons.while_pressed("UP")
+                    
+            elif self.boutons.getStatus("DOWN")==False:
+                counterAlphabet-=len(string.ascii_letters)//2
+                counterAlphabet %= len(string.ascii_letters)
+                self.boutons.while_pressed("DOWN")
+                    
             elif self.boutons.getStatus("OK")==False:
-                print(string.ascii_letters[counterAlphabet+(self.ecran.nbCols//2)])
-                return counterAlphabet+(self.ecran.nbCols//2)
+                a=(counterAlphabet+(self.ecran.nbCols//2))%len(self.my_alphabet)
+                self.saisie += self.my_alphabet[a]
+                position+=1
+                self.boutons.while_pressed("OK", 1500)
+            
             elif self.boutons.getStatus("BACK")==False:
-                return -1
+                self.saisie = self.saisie[:-1]
+                self.boutons.while_pressed("BACK", 1500)
+                
+            if False in self.boutons.status :
+                self.alphabet(counterAlphabet)
