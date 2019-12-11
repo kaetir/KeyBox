@@ -6,7 +6,7 @@ class Menu():
     
     my_alphabet = string.printable.replace(string.whitespace,"")
 
-    def __init__(self, ecran: Ecran, boutons: Boutons, fichier: str ="Comptes.txt") -> None:
+    def __init__(self, ecran: Ecran, boutons: Boutons) -> None:
         """
         @summary constructeur
         @param ecran: Ecran -> réference sur l'écran
@@ -16,12 +16,15 @@ class Menu():
         super().__init__()
         self.ecran = ecran
         self.boutons = boutons
+        self.compte()
+        self.saisie = []
+        
+    def read(self, fichier):
         f = open(fichier, "r")
         content = f.read()
         data = content.split("\n")
         self.title = data[0]
         self.entries = data[1:]
-        self.saisie = []
 
     def print(self, counter=0) -> None:
         """
@@ -50,11 +53,19 @@ class Menu():
             elmt =  self.my_alphabet[(counterAlphabet+i)%len(self.my_alphabet)]
             self.ecran.draw_text(elmt,1,i)
         for l in self.saisie:
-            self.ecran.draw_text(l,2,self.saisie.index(l))
+            self.ecran.draw_text(l,2,self.saisie.index(l)+1)
         
         self.ecran.display()
-    
-    
+        
+    def button(self, x):
+        counterAlphabet=0
+        counterAlphabet %= len(string.ascii_letters)
+        self.boutons.while_pressed(x)
+        
+    def compte(self):
+        self.read("Comptes.txt")
+        self.select()
+        
     def select(self) -> int:
         """
         @summary lit l'état des boutons jusqu'a ce que OK ou BACK soit préssé
@@ -85,40 +96,52 @@ class Menu():
         
     def selectAlphabet(self) ->None:
         self.alphabet()
-        position=0
         counterAlphabet=0
+        position=0
+                
         while True:
             
             if self.boutons.getStatus("RIGHT")==False:
                 counterAlphabet+=1
-                counterAlphabet %= len(string.ascii_letters)
-                self.boutons.while_pressed("RIGHT")
+                self.button("RIGHT")
                 
             elif self.boutons.getStatus("LEFT")==False:
                 counterAlphabet-=1
                 if counterAlphabet < 0:
-                   counterAlphabet = len(self.my_alphabet)
-                self.boutons.while_pressed("LEFT")
+                   self.button("LEFT")
                     
             elif self.boutons.getStatus("UP")==False:
                 counterAlphabet+=len(string.ascii_letters)//2
-                counterAlphabet %= len(string.ascii_letters)
-                self.boutons.while_pressed("UP")
+                self.button("UP")
                     
             elif self.boutons.getStatus("DOWN")==False:
                 counterAlphabet-=len(string.ascii_letters)//2
-                counterAlphabet %= len(string.ascii_letters)
-                self.boutons.while_pressed("DOWN")
+                self.button("DOWN")
                     
             elif self.boutons.getStatus("OK")==False:
                 a=(counterAlphabet+(self.ecran.nbCols//2))%len(self.my_alphabet)
                 self.saisie += self.my_alphabet[a]
                 position+=1
-                self.boutons.while_pressed("OK", 1500)
+                self.boutons.while_pressed("OK", 1000)
+                print (len(self.saisie))
+                
+            elif len(self.saisie)==3:
+                self.ecran.draw_text(">",2,0)
+                if self.boutons.getStatus("OK")==False:
+                    self.saisie = self.saisie-1
+                    print("ok boucle")
+                    self.select()
+                    menuComptes.print()
+                self.ecran.display()
             
             elif self.boutons.getStatus("BACK")==False:
                 self.saisie = self.saisie[:-1]
-                self.boutons.while_pressed("BACK", 1500)
+                self.boutons.while_pressed("BACK", 1000)
                 
             if False in self.boutons.status :
                 self.alphabet(counterAlphabet)
+        
+    def selectWelcome(self) ->None:
+        while True:
+            if self.boutons.getStatus("OK")==False:
+                self.selectAlphabet()

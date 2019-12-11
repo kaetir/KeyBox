@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 
 class Boutons:
     # pin GPIO
-    pinBtn=[16,19,26,21,20,27]
+    pinBtn=[18,27,17,4,22,23]
 
     # place des bouton dans le tableau pinBtn
     mapping = {

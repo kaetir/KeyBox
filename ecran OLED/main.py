@@ -6,7 +6,8 @@ from menu  import Menu
 monEcran = Ecran()
 mesBoutons = Boutons()
 monMenu = Menu(monEcran, mesBoutons)
-menuLogin = Menu(monEcran, mesBoutons, "login.txt")
+menuLogin = Menu(monEcran, mesBoutons)
+menuWelcome = Menu(monEcran, mesBoutons)
 
 """
 # on efface et on affiche un texte
@@ -19,7 +20,9 @@ monEcran.draw_text("TEST2", 1, 6)
 """
 
 
-
+monMenu.print()           
+#menuWelcome.print()
+#monMenu.selectWelcome()
 #menuLogin.print()
 
 """
@@ -28,9 +31,6 @@ while (monMenu.select()==1):
     while monMenu.select()==0:
         menuLogin.print()
 """
-    
-monMenu.selectAlphabet()
-
 # on a bien que le deuxieme texte qui d'affiche
 
 
