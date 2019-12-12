@@ -53,7 +53,7 @@ def clear_scr():
     disp.display()
 
 def Menu():
-    f= open("fichier.txt","r")
+    f= open("file.txt","r")
     content = f.read()
     data = content.split("\n")
     draw_text(data[0],0)

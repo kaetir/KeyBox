@@ -2,12 +2,14 @@
 from boutons import Boutons
 from ecran import Ecran
 from menu  import Menu
+from alphabet import Alphabet
 
 monEcran = Ecran()
 mesBoutons = Boutons()
-monMenu = Menu(monEcran, mesBoutons)
-menuLogin = Menu(monEcran, mesBoutons)
-menuWelcome = Menu(monEcran, mesBoutons)
+#monMenu = Menu(monEcran, mesBoutons)
+menuLogin = Menu(monEcran, mesBoutons,"login.txt")
+menuWelcome = Menu(monEcran, mesBoutons, "Welcome.txt")
+ma_saisie = Alphabet(monEcran, mesBoutons)
 
 """
 # on efface et on affiche un texte
@@ -20,9 +22,15 @@ monEcran.draw_text("TEST2", 1, 6)
 """
 
 
-monMenu.print()           
+#monMenu.print()
 #menuWelcome.print()
-#monMenu.selectWelcome()
+menuWelcome.select()
+
+while ma_saisie.select_alphabet() != "caca":
+    print("NOP")
+
+
+menuLogin.select()
 #menuLogin.print()
 
 """
