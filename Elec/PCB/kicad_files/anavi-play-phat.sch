@@ -255,4 +255,26 @@ Wire Wire Line
 Connection ~ 6350 3700
 Wire Wire Line
 	6350 3700 6350 4050
+$Comp
+L w_connectors:HEADER_2 J1
+U 1 1 5DF274FA
+P 8450 2650
+F 0 "J1" H 8578 2756 60  0000 L CNN
+F 1 "USB Data" H 8578 2650 60  0000 L CNN
+F 2 "w_conn_misc:header 2m spaced" H 8578 2544 60  0000 L CNN
+F 3 "" H 8450 2650 60  0000 C CNN
+	1    8450 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L w_connectors:HEADER_2 J2
+U 1 1 5DF290D8
+P 8450 3000
+F 0 "J2" H 8578 3106 60  0000 L CNN
+F 1 "USB power" H 8578 3000 60  0000 L CNN
+F 2 "w_conn_misc:header 2m spaced" H 8578 2894 60  0000 L CNN
+F 3 "" H 8450 3000 60  0000 C CNN
+	1    8450 3000
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
