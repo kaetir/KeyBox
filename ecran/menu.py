@@ -1,5 +1,5 @@
-from boutons import Boutons
-from ecran import Ecran
+from ecran.boutons import Boutons
+from ecran.ecran import Ecran
 
 
 class Menu:
@@ -46,7 +46,7 @@ class Menu:
                     self.ecran.draw_text(str(counter + 1 + i) + ". " + elmt, i + 1)
         else:
             for i in range(min(self.ecran.nbLign, len(self.entries))):
-                elmt = self.entries[(counter + i) % len(self.entries)]
+                elmt = self.entries[(counter + i - 1) % len(self.entries)]
                 if i == self.ecran.nbLign // 2:
                     self.ecran.draw_text(str(counter + 1 + i) + "> " + elmt, 1)
                 else:
@@ -60,6 +60,7 @@ class Menu:
         @return  numéro de l'entré si OK 
         """
         self.print()
+        self.boutons.while_pressed("OK", 3000)
         counter = 0
 
         while True:
@@ -67,17 +68,17 @@ class Menu:
                 counter += 1
                 counter %= len(self.entries)
                 self.print(counter)
-                while not self.boutons.getStatus("DOWN"):
-                    self.boutons.getStatus("DOWN")
+                self.boutons.while_pressed("DOWN", 400)
 
             elif not self.boutons.getStatus("UP"):
                 counter -= 1
                 if counter < 0:
-                    counter = len(self.entries)
+                    counter = len(self.entries)-1
                 self.print(counter)
-                while not self.boutons.getStatus("UP"):
-                    self.boutons.getStatus("UP")
+                self.boutons.while_pressed("UP", 400)
+
+
             elif not self.boutons.getStatus("OK"):
-                return counter + 1
+                return counter
             elif not self.boutons.getStatus("BACK"):
                 return -1
