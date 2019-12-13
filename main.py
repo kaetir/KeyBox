@@ -36,7 +36,14 @@ while True:
             break
         elif wifi_entre == 0:
             en_hostspot()
-            change_wifi_passwd()
             print("OK")
-        elif wifi_entre  ==1:
-            get_wifi_passwd()
+        elif wifi_entre == 1:
+            dis_hostspot()
+        elif wifi_entre == 2:
+            monEcran.clear_scr()
+            monEcran.draw_text(get_wifi_passwd(), 0)
+            monEcran.display()
+            mesBoutons.while_pressed("OK", 5000)
+            while mesBoutons.getStatus("OK"):
+               print("TODO")
+            mesBoutons.while_pressed("OK", 60000)
