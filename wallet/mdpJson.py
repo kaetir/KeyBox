@@ -79,7 +79,7 @@ def add_password(filename: str, actual_valid_password: str, new_password_hash: s
     # actual_valid_password is valid
     try:
         with open(filename, "r+") as f:
-            content = f.read()n  
+            content = f.read()n
             jload = json.loads(content)
 
             key = jload["mainkeys"][valid_idx]

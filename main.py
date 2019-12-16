@@ -1,9 +1,13 @@
+import os
+os.chdir(os.path.dirname("/home/pi/Keybox"))
 
 from ecran.boutons import Boutons
 from ecran.ecran import Ecran
 from ecran.menu  import Menu
 from ecran.alphabet import Alphabet
 from hotspot.mod_hotspot import *
+
+
 
 monEcran = Ecran()
 mesBoutons = Boutons()
