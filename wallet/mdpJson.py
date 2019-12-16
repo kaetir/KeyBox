@@ -12,50 +12,57 @@ clé secondaire
 """
 
 
-def genNewFile(filename: str, username: str, main_password_hash):
+def gen_new_file(filename: str, username: str, main_password_hash) -> None:
     """
     @summary generate file for wallet
     @param filename: name of the file to create
     @param username: le nom d'utilisateur
     @param main_password_hash: la clé principale du mec hashé
-    @return:
     """
     try:
         with open(filename, "x") as f:
-            mainkey = mdp_crypt(main_password_hash, os.urandom(16))
+            mainkey_rng = os.urandom(32).hex()
+            mainkey = mdp_crypt(main_password_hash, mainkey_rng)
+            concombre = mdp_crypt(mainkey_rng, "concombre")
+            #  alors la je suis con quand on appel la fonction on genere un nouveau nonce
             jload = {"mainuser": username,
                      "mainkeys": [{
                          "mainkey": mainkey[0],
                          "nonce": mainkey[1]
                      }],
-                     "checkpasswd": [{
-                         "check": mdpCrypt(main_password_hash, "concombre")[0],
-                         "nonce": mdpCrypt(main_password_hash, "concombre")[1]
-                     }],
+                     "checkpasswd": {
+                         "check": concombre[0],
+                         "nonce": concombre[1]
+                     },
                      "entries": []}
             f.write(json.dumps(jload, indent=4).replace("    ", '\t'))
     except IOError:
         print("erreur avec le fichier")
 
 
-def check_valid(password: str) -> bool:
+def check_valid(filename: str, main_password_hash) -> int:
     """
-    @summary check the validity of a password
-    @param password: password to check
-    @return: True if the password can unlock the wallet
+    @summary check the validity of a password using the "concombre"
+    @param filename: file of the wallet
+    @param main_password_hash: password to check
+    @return: int: the position of the password which can unlock the wallet
+            -1 if not found or error
     """
     try:
         with open(filename, "r+") as f:
             content = f.read()
             jload = json.loads(content)
-            for key in jload["mainkey"]:
-                for check in jload["checkpasswd"]:
-                    if "concombre" == mdp_decrypt(mdpDecrypt(password, key["mainkey"],
-                                                             key["nonce"]), check["check"], chech["nonce"]):
-                        return True
+            for key in jload["mainkeys"]:
+                try:
+                    if "concombre" == mdp_decrypt(
+                            mdp_decrypt(str(main_password_hash), str(key["mainkey"]), str(key["nonce"])).decode("utf8"),
+                            jload["checkpasswd"]["check"], jload["checkpasswd"]["nonce"]).decode("utf8"):
+                        return jload["mainkeys"].index(key)
+                except UnicodeDecodeError:
+                    print("Pas bon décodage")
     except IOError:
-        return False
-    return False
+        return -1
+    return -1
 
 
 def add_password(filename: str, actual_valid_password: str, new_password_hash: str) -> bool:
@@ -64,17 +71,24 @@ def add_password(filename: str, actual_valid_password: str, new_password_hash: s
     @param filename: name of the file of the wallet
     @param actual_valid_password: one of the actual password
     @param new_password_hash: the new password to add
-    @return: True if the password can unlock the wallet
+    @return: True if the password is added the wallet
     """
+    valid_idx = check_valid(actual_valid_password)
+    if valid_idx < 0:
+        return False
+    # actual_valid_password is valid
     try:
         with open(filename, "r+") as f:
-            content = f.read()
+            content = f.read()n  
             jload = json.loads(content)
-            mainkey = mdp_crypt(main_password_hash, os.urandom(16))
-            # new_password_hash
+
+            key = jload["mainkeys"][valid_idx]
+            mainkey = mdp_decrypt(str(main_password_hash), str(key["mainkey"]), str(key["nonce"])).decode("utf8")
+            new_mainkey = mdp_crypt(mainkey, new_password_hash)
+
             jload["mainkeys"].append({
-                "mainkey": mainkey[0],
-                "nonce": mainkey[1]
+                "mainkey": new_mainkey[0],
+                "nonce": new_mainkey[1]
             })
             f.seek(0)
             f.truncate(0)
@@ -98,7 +112,8 @@ def add_entry(filename, application, username, nonce, passwd) -> bool:
         with open(filename, "r+") as f:
             content = f.read()
             jload = json.loads(content)
-            jload["entries"].append({"application": application, "username": username, "nonce": nonce, "passwd": passwd})
+            jload["entries"].append(
+                {"application": application, "username": username, "nonce": nonce, "passwd": passwd})
             f.seek(0)
             f.truncate(0)
             f.write(json.dumps(jload, indent=4).replace("    ", '\t'))
@@ -107,35 +122,45 @@ def add_entry(filename, application, username, nonce, passwd) -> bool:
     return True
 
 
-def getEntries(filename):
+def get_entries(filename):
+    """
+    @summary  return all entrie from a file
+    @param filename: name of the file of the wallet
+    @return list[dict] :
+    """
     with open(filename, "r") as f:
         content = f.read()
         jload = json.loads(content)
         return jload["entries"]
 
 
-def getEntry(filename, application):
-    with open(filename, "r") as f:
-        content = f.read()
-        jload = json.loads(content)
-        return [d for d in jload["entries"] if d["application"] == application][0]
+def get_entry(filename: str, application: str):
+    """
+    @summary return an entrie from a file if multiple for the application return the first
+    @param filename: str -> name of the file of the wallet
+    @param application: str ->  the name of the application we want the password
+    @return dict : entry ->   "application"    "username"    "nonce"    "passwd"
+    """
+    try:
+        with open(filename, "r") as f:
+            content = f.read()
+            jload = json.loads(content)
+            for entry in jload["entries"]:
+                if entry["application"] == application:
+                    return entry
+    except json.JSONDecodeError:
+        print("Mauvais format de json")
+        exit(-1)
+    return ""
 
 
-def getUsername(filename):
+def get_username(filename: str) -> None:
+    """
+    @summary return the username of a file
+    @param filename: str -> name of the file of the wallet
+    @return str : le pseudo de l'utilisateur
+    """
     with open(filename, "r+") as f:
         content = f.read()
         jload = json.loads(content)
         return jload["username"]
-
-
-def getPasswordValidity(filename: str, passwdToCheck: str) -> bool:
-    """
-    @sumarry on ne garde plus le hash_function du mot de passe mais
-            on déchiffre une valeur connue avec la clé déchiffré
-    @param filename : le path du fichier de wallet 
-    @param passwdToCheck le mot de passe que l'on veut vérifié
-    """
-    with open(filename, "r+") as f:
-        content = f.read()
-        jload = json.loads(content)
-        jload["mainkey"]

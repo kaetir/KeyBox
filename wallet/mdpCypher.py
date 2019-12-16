@@ -8,14 +8,16 @@ from cryptography.hazmat.backends import default_backend
 
 from Crypto.Hash import SHA512
 
+AES.block_size = 256
 
-def mdp_crypt(main_password, password_to_crypt):
+
+def mdp_crypt(main_password: str, password_to_crypt: str):
     """
     @param main_password: str -> the userpassword
     @param password_to_crypt: str -> to crypt
     @return: byte string
     """
-    nonce = os.urandom(16)
+    nonce = os.urandom(32)
     key = bcrypt.kdf(password=bytes(main_password, "utf8"), salt=nonce, desired_key_bytes=32, rounds=100)
     ciph = Cipher(AES(key), CTR(nonce), default_backend())
     encryptor = ciph.encryptor()
@@ -23,19 +25,21 @@ def mdp_crypt(main_password, password_to_crypt):
     return encryptor.update(bytes(password_to_crypt, "utf8")).hex(), nonce.hex()
 
 
-def mdp_decrypt(main_password: str, pasword_to_decrypt: bytes, nonce: bytes) -> str:
+def mdp_decrypt(main_password: str, pasword_to_decrypt: str, nonce: str) -> str:
     """
     @summary décrypte un mot de passe a partir du maitre et du nonce
     @param main_password: str
-    @param pasword_to_decrypt: byte string
-    @param nonce:
-    @return: str
+    @param pasword_to_decrypt: str
+    @param nonce: str
+    @return: bytes .decode("utf8") pour utf8
     """
-    key = bcrypt.kdf(password=bytes(main_password, "utf8"), salt=bytes.fromhex(nonce), desired_key_bytes=32, rounds=100)
-    ciph = Cipher(AES(key), CTR(bytes.fromhex(nonce)), default_backend())
+    nonce = bytes.fromhex(nonce)
+    main_password = bytes(main_password, 'utf8')
+    key = bcrypt.kdf(password=main_password, salt=nonce, desired_key_bytes=32, rounds=100)
+    ciph = Cipher(AES(key), CTR(nonce), default_backend())
     decryptor = ciph.decryptor()
 
-    return decryptor.update(bytes.fromhex(pasword_to_decrypt)).decode("utf8")
+    return decryptor.update(bytes.fromhex(pasword_to_decrypt))
 
 
 def hash_function(to_hash: str) -> str:
