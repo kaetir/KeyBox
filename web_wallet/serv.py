@@ -42,7 +42,7 @@ class S(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
             self.end_headers()
-            self.wfile.write(bytes(wallet.walletJson.json.dumps(wallet.walletJson.getEntries(fileWallet)), "utf8"))
+            self.wfile.write(bytes(wallet.walletJson.json.dumps(wallet.walletJson.get_entries(fileWallet)), "utf8"))
         
         else:
             # page non spéciale
