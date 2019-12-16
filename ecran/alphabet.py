@@ -1,12 +1,12 @@
-from boutons import Boutons
-from ecran import Ecran
-from menu import Menu
+from ecran.boutons import Boutons
+from ecran.ecran import Ecran
+from ecran.menu import Menu
 import string
 
 
 class Alphabet(Menu):
 
-    def __init__(self, ecran: Ecran, boutons: Boutons, file: str = "vide.txt") -> None:
+    def __init__(self, ecran: Ecran, boutons: Boutons, file: str = "ecran/vide.txt") -> None:
         super().__init__(ecran, boutons, file)
         self.saisie = ""
         self.my_alphabet = ["valider"] + list(string.printable.replace(string.whitespace, ""))

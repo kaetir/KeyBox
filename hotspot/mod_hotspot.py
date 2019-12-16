@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from os import system
-from genRngPasswd import randomString
+from wallet.genRngPasswd import *
 
 def change_wifi_passwd():
     dic = {}
@@ -12,7 +12,7 @@ def change_wifi_passwd():
         dic = {x.split("=")[0] : x.split("=")[-1] for x in data}   
 
     with open("/etc/hostapd/hostapd.conf","w") as f:
-        dic["wpa_passphrase"] = randomString(8)
+        dic["wpa_passphrase"] = random_string(8)
         tamerelapute = [ "{}={}\n".format(key,dic[key]) for key in dic]
         print(tamerelapute)
         for l in tamerelapute:
@@ -20,7 +20,7 @@ def change_wifi_passwd():
 
 
 def en_hostspot():
-    change_wifi_passwd())
+    change_wifi_passwd()
     system("systemctl start hostapd")
 
 
