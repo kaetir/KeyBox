@@ -100,7 +100,7 @@ class S(BaseHTTPRequestHandler):
             self.wfile.write(self._html("<meta charset='utf-8'><h1>requettes post non géré</h1>"))
         
 
-def run(server_class=HTTPServer, handler_class=S, addr="localhost", port=8000):
+def run(server_class=HTTPServer, handler_class=S, addr="0.0.0.0", port=80):
     server_address = (addr, port)
     httpd = server_class(server_address, handler_class)
 
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-l",
         "--listen",
-        default="localhost",
+        default="0.0.0.0",
         help="Specify the IP address on which the server listens",
     )
     parser.add_argument(

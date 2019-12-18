@@ -4,12 +4,13 @@ from ecran.ecran import Ecran
 
 class Menu:
 
-    def __init__(self, ecran: Ecran, boutons: Boutons, file: str = "vide.txt") -> None:
+    def __init__(self, ecran: Ecran, boutons: Boutons, file: str = "vide.txt", entres: list = None) -> None:
         """
         @summary constructeur
         @param ecran: Ecran -> réference sur l'écran
         @param boutons: Boutons -> références sur l'objets boutons$
         @param file: str -> file avec les entrés du menu
+        @param entres: list -> overwrite the file entries
         """
         super().__init__()
         self.ecran = ecran
@@ -17,6 +18,8 @@ class Menu:
         self.title = ""
         self.entries = []
         self.read(file)
+        if entres is not None:
+            self.entries = entres
 
     def read(self, file: str = "vide.txt"):
         """

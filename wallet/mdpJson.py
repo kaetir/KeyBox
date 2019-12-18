@@ -1,3 +1,4 @@
+from __future__ import annotations
 import json
 from mdpCypher import *
 
@@ -12,7 +13,7 @@ clé secondaire
 """
 
 
-def gen_new_file(filename: str, username: str, main_password_hash) -> None:
+def gen_new_file(filename: str, username: str, main_password_hash) -> int:
     """
     @summary generate file for wallet
     @param filename: name of the file to create
@@ -38,6 +39,8 @@ def gen_new_file(filename: str, username: str, main_password_hash) -> None:
             f.write(json.dumps(jload, indent=4).replace("    ", '\t'))
     except IOError:
         print("erreur avec le fichier")
+        return 1
+    return 0
 
 
 def check_valid(filename: str, main_password_hash) -> int:
@@ -59,33 +62,38 @@ def check_valid(filename: str, main_password_hash) -> int:
                             jload["checkpasswd"]["check"], jload["checkpasswd"]["nonce"]).decode("utf8"):
                         return jload["mainkeys"].index(key)
                 except UnicodeDecodeError:
-                    print("Pas bon décodage")
+                    pass
+            print("pas dans les keys")
     except IOError:
         return -1
     return -1
 
 
-def add_password(filename: str, actual_valid_password: str, new_password_hash: str) -> bool:
+def add_password(filename: str, actual_valid_password_hash: str, new_password_hash: str) -> bool:
     """
     @summary add a password to the wallet
     @param filename: name of the file of the wallet
-    @param actual_valid_password: one of the actual password
+    @param actual_valid_password_hash: one of the actual password
     @param new_password_hash: the new password to add
     @return: True if the password is added the wallet
     """
-    valid_idx = check_valid(actual_valid_password)
+    print("add_passwd")
+    valid_idx = check_valid(filename, actual_valid_password_hash)
     if valid_idx < 0:
         return False
+    print("idx :", valid_idx)
     # actual_valid_password is valid
     try:
         with open(filename, "r+") as f:
-            content = f.read()n
+            content = f.read()
             jload = json.loads(content)
 
+            # Getting the main key of the wallet
             key = jload["mainkeys"][valid_idx]
-            mainkey = mdp_decrypt(str(main_password_hash), str(key["mainkey"]), str(key["nonce"])).decode("utf8")
-            new_mainkey = mdp_crypt(mainkey, new_password_hash)
+            mainkey = mdp_decrypt(actual_valid_password_hash, str(key["mainkey"]), str(key["nonce"])).decode("utf8")
 
+            new_mainkey = mdp_crypt(mainkey, new_password_hash)
+            print(new_mainkey)
             jload["mainkeys"].append({
                 "mainkey": new_mainkey[0],
                 "nonce": new_mainkey[1]
@@ -93,6 +101,9 @@ def add_password(filename: str, actual_valid_password: str, new_password_hash: s
             f.seek(0)
             f.truncate(0)
             f.write(json.dumps(jload, indent=4).replace("    ", '\t'))
+    except UnicodeDecodeError:
+        print("oupsi")
+        return False
     except IOError:
         return False
     return True
@@ -122,16 +133,19 @@ def add_entry(filename, application, username, nonce, passwd) -> bool:
     return True
 
 
-def get_entries(filename):
+def get_entries(filename: str) -> Optional[bool, dict]:
     """
     @summary  return all entrie from a file
     @param filename: name of the file of the wallet
     @return list[dict] :
     """
-    with open(filename, "r") as f:
-        content = f.read()
-        jload = json.loads(content)
-        return jload["entries"]
+    try:
+        with open(filename, "r") as f:
+            content = f.read()
+            jload = json.loads(content)
+            return jload["entries"]
+    except IOError:
+        return False
 
 
 def get_entry(filename: str, application: str):
