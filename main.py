@@ -61,14 +61,14 @@ while True:
     if entre == 2: # Non bloquant
         NULL_CHAR = chr(0)
         # Press c key
-        write_report(NULL_CHAR * 2 + chr(6) + NULL_CHAR * 5)
+        write_keyboad(NULL_CHAR * 2 + chr(6) + NULL_CHAR * 5)
         # Press a
-        write_report(NULL_CHAR * 2 + chr(4) + NULL_CHAR * 5)
+        write_keyboad(NULL_CHAR * 2 + chr(4) + NULL_CHAR * 5)
         # Release keys
-        write_report(NULL_CHAR * 8)
+        write_keyboad(NULL_CHAR * 8)
         # Press c key
-        write_report(NULL_CHAR * 2 + chr(6) + NULL_CHAR * 5)
+        write_keyboad(NULL_CHAR * 2 + chr(6) + NULL_CHAR * 5)
         # Press a
-        write_report(NULL_CHAR * 2 + chr(4) + NULL_CHAR * 5)
+        write_keyboad(NULL_CHAR * 2 + chr(4) + NULL_CHAR * 5)
         # Release keys
-        write_report(NULL_CHAR * 8)
+        write_keyboad(NULL_CHAR * 8)
