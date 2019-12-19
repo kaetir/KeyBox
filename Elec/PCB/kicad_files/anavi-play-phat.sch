@@ -277,4 +277,38 @@ F 3 "" H 8450 3000 60  0000 C CNN
 	1    8450 3000
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	8350 2600 8150 2600
+Wire Wire Line
+	8350 2700 8150 2700
+Wire Wire Line
+	8350 2950 8150 2950
+Wire Wire Line
+	8350 3050 8150 3050
+$Comp
+L anavi-play-phat-rescue:GND-power #PWR?
+U 1 1 5DFB5C7E
+P 8150 3050
+F 0 "#PWR?" H 8150 2800 50  0001 C CNN
+F 1 "GND-power" H 8155 2877 50  0000 C CNN
+F 2 "" H 8150 3050 50  0001 C CNN
+F 3 "" H 8150 3050 50  0001 C CNN
+	1    8150 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L anavi-play-phat-rescue:+5V-power #PWR?
+U 1 1 5DFB7142
+P 8150 2950
+F 0 "#PWR?" H 8150 2800 50  0001 C CNN
+F 1 "+5V-power" V 8165 3077 50  0000 L CNN
+F 2 "" H 8150 2950 50  0001 C CNN
+F 3 "" H 8150 2950 50  0001 C CNN
+	1    8150 2950
+	0    -1   -1   0   
+$EndComp
+Text GLabel 8150 2600 0    50   Input ~ 0
+D+
+Text GLabel 8150 2700 0    50   Input ~ 0
+D-
 $EndSCHEMATC

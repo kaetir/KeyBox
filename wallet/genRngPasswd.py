@@ -18,8 +18,8 @@ def gen_phrase(nb_mot: int = 10) -> str:
     @param nb_mot: int ->  nbMot
     @return str: la phrase de sortie
     """
-    with open('liste_francais.txt', 'r') as f:
-        return " ".join(random.choices(f.read().split('\n'), k=nb_mot))
+    with open('wallet/liste_francais.txt', 'r') as f:
+        return ".".join(random.choices(f.read().split('\n'), k=nb_mot))
 
 
 if __name__ == "__main__":

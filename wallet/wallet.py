@@ -1,7 +1,7 @@
 from __future__ import annotations
-import mdpJson as walletJson
-from mdpCypher import *
-from genRngPasswd import *
+import wallet.mdpJson as walletJson
+from wallet.mdpCypher import *
+from wallet.genRngPasswd import *
 
 """
 gestion du wallet 
@@ -25,22 +25,22 @@ class Wallet:
         """
         if walletJson.check_valid(self.file, hash_function(mainpasswd)) >= 0:
             self.lock = False
-            self.mainpassword = mainpasswd
+            self.mainpassword = walletJson.get_main_key(self.file, hash_function(mainpasswd))
             return True
         return False
 
     def create_wallet(self, username: str, mainpasswd: str) -> str:
         """
         @summary crée le fichier du wallet
-        @param username: object
-        @param mainpasswd: le mot de passe d'ouverture
+        @param username: str
+        @param mainpasswd: str le mot de passe d'ouverture
         @return la clé de récupération du wallet
         """
         if walletJson.gen_new_file(self.file, username, hash_function(mainpasswd)) == 0:
             self.lock = False
-            self.mainpassword = mainpasswd
+            self.mainpassword = walletJson.get_main_key(self.file, hash_function(mainpasswd))
             security_sentence = gen_phrase()
-            walletJson.add_password(self.file, hash_function(self.mainpassword), hash_function(security_sentence))
+            walletJson.add_password(self.file, hash_function(mainpasswd), hash_function(security_sentence))
             return security_sentence
 
     def add_password(self, actual_valid_password: str, new_password: str) -> bool:
@@ -64,7 +64,7 @@ class Wallet:
 
         if walletJson.get_entry(self.file, application):
             entry = walletJson.get_entry(self.file, application)
-            entry["passwd"] = mdp_decrypt(mainpasswd, entry["passwd"], entry["nonce"])
+            entry["passwd"] = mdp_decrypt(self.mainpassword, entry["passwd"], entry["nonce"])
             return entry
 
     def get_applications(self) -> Optional[bool, list]:
@@ -77,7 +77,7 @@ class Wallet:
 
         entries = walletJson.get_entries(self.file)
         if entries is not False:
-            return [ e["application"] for e in entries]
+            return [e["application"] for e in entries]
         else:
             print("WRONG PASSWORD")
             return False
@@ -90,10 +90,13 @@ class Wallet:
         @param passwd: str the password of the acount
         @param mainpasswd: str the password of the wallet
         """
-        if self.lock:
-            return False
 
-        [mdpc, nonce] = mdp_crypt(mainpasswd, passwd)
+        if self.lock:
+            if not self.unlock(mainpasswd):
+                return False
+
+
+        [mdpc, nonce] = mdp_crypt(self.mainpassword, passwd)
         return walletJson.add_entry(self.file, application, username, nonce, mdpc)
 
 
@@ -104,16 +107,14 @@ if __name__ == "__main__":
     wallet_file = "test.json"
     w = Wallet(wallet_file)
     mainpasswd = input("mainpassword : ")
-    #os.system("rm " + wallet_file)
+    # os.system("rm " + wallet_file)
     if not os.path.isfile(wallet_file):
         print("Creating a wallet")
         name = input("name : ")
         print("phrase de récup :", w.create_wallet(name, mainpasswd))
-        recup = gen_phrase(10)
 
     while not w.unlock(mainpasswd):
         mainpasswd = input("mainpassword : ")
-    print(w.add_password(mainpasswd, "prout"))
 
     if "o" == input("open wallet for reading (o/N)? :"):
         print(w.get_applications())

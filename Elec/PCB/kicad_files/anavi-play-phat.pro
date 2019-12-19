@@ -1,4 +1,4 @@
-update=mar. 03 déc. 2019 15:18:41 CET
+update=jeu. 19 déc. 2019 10:21:08 CET
 version=1
 last_client=kicad
 [cvpcb]
@@ -47,6 +47,9 @@ ViaDrill2=1.2
 dPairWidth1=0.25
 dPairGap1=0.25
 dPairViaGap1=0.25
+dPairWidth2=0.8
+dPairGap2=0.3
+dPairViaGap2=1.3
 SilkLineWidth=0.15
 SilkTextSizeV=1
 SilkTextSizeH=1

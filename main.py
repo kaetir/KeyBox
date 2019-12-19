@@ -20,7 +20,7 @@ menuWelcome = Menu(monEcran, mesBoutons, "ecran/Welcome.txt")
 ma_saisie = Alphabet(monEcran, mesBoutons)
 
 
-def write_keybord(report):
+def write_keyboard(report):
     with open('/dev/hidg0', 'rb+') as fd:
         fd.write(report.encode())
 
@@ -61,14 +61,14 @@ while True:
     if entre == 2: # Non bloquant
         NULL_CHAR = chr(0)
         # Press c key
-        write_keyboad(NULL_CHAR * 2 + chr(6) + NULL_CHAR * 5)
+        write_keyboard(NULL_CHAR * 2 + chr(6) + NULL_CHAR * 5)
         # Press a
-        write_keyboad(NULL_CHAR * 2 + chr(4) + NULL_CHAR * 5)
+        write_keyboard(NULL_CHAR * 2 + chr(4) + NULL_CHAR * 5)
         # Release keys
-        write_keyboad(NULL_CHAR * 8)
+        write_keyboard(NULL_CHAR * 8)
         # Press c key
-        write_keyboad(NULL_CHAR * 2 + chr(6) + NULL_CHAR * 5)
+        write_keyboard(NULL_CHAR * 2 + chr(6) + NULL_CHAR * 5)
         # Press a
-        write_keyboad(NULL_CHAR * 2 + chr(4) + NULL_CHAR * 5)
+        write_keyboard(NULL_CHAR * 2 + chr(4) + NULL_CHAR * 5)
         # Release keys
-        write_keyboad(NULL_CHAR * 8)
+        write_keyboard(NULL_CHAR * 8)

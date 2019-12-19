@@ -199,7 +199,7 @@ celerybeat-schedule
 .dmypy.json
 dmypy.json
 
-# Pyre type checker
+# Pyre mime_type checker
 .pyre/
 
 # End of https://www.gitignore.io/api/code,python,pycharm
