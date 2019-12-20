@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import os
 
 os.chdir("/home/pi/Keybox")
