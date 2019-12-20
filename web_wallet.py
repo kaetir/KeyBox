@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+import os
+os.chdir("/home/pi/Keybox")
 
 import argparse
 import wallet.genRngPasswd as genRngPasswd
 from wallet.wallet import Wallet
 import wallet.wallet as wallet
-import os
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from http.cookies import SimpleCookie
 import html
