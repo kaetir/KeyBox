@@ -34,7 +34,7 @@ class S(BaseHTTPRequestHandler):
 
         # then use somewhat like a dict, e.g:
         # username = cookies['username'].value
-        if "mainpassword" not in cookies.keys() and self.path.split(".")[-1] not in ["css", "js", "png"]:
+        if "mainpassword" not in cookies.keys() and self.path.split(".")[-1] not in ["css", "js", "png"] and os.path.isfile(fileWallet):
             if not os.path.isfile(fileWallet):
                 self.path = "/"
             else:
