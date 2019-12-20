@@ -3,7 +3,7 @@ import os
 
 os.chdir("/home/pi/Keybox")
 
-def ip()
+def ip():
     os.system("ip -4 -br address show wlan0 > ip.txt")
     return open("ip.txt").read().split("             ")[-1]
 
