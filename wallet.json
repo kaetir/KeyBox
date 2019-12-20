@@ -1,0 +1,67 @@
+{
+	"mainuser": "thibault",
+	"mainkeys": [
+		{
+			"mainkey": "026112d7c1a671e337fff06f9c85c91a5178fc223e52f3f0c03ce3dc7e82fa4ca3d1df0eda62e306a24b9ec59898b40cd1fcd4d12f0b84c0bd30dd34b34e37d1",
+			"nonce": "11811a879a48177c89728ba9dd376a96dadacfb4e6b1a07d1338937313889a63"
+		},
+		{
+			"mainkey": "2501a757fca5cd6f63490c74781729df896df2bd08bd74630faf14278d608df734c76c00e255574803a66b14fd3992281a3bac6356b127aa5dd07139a16da56e",
+			"nonce": "6dc2165eb9ba5a811d5b166637128173ce4f26337d3604ec62eb3d90d5faeb48"
+		}
+	],
+	"checkpasswd": {
+		"check": "ccbbe778f3a27d2df2",
+		"nonce": "ace66e4d904db8b7062978589dc26a6c438d15fe8b36ca97c31d17a5b5c8f059"
+	},
+	"entries": [
+		{
+			"application": "google",
+			"username": "thibault",
+			"nonce": "705b8efa9fcaeb9f79dc6ecdf7755bb41e731f1bf3c37933446d00abe62f51df",
+			"passwd": "4fc45bd0010d08f576cc79098e67d5484fc41f96f18b0e719b5bc9400cd72177"
+		},
+		{
+			"application": "google",
+			"username": "thibault",
+			"nonce": "6852435bb6a4dd0d3968d1aafab885a2c0adb0e2e0d9e858ddae2b0a76367655",
+			"passwd": "f1c3a7d006ac2174ed7acd2abec7a75e21c8e939305bbe8abbfb5d27f175f7a8"
+		},
+		{
+			"application": "Keybox",
+			"username": "thibault",
+			"nonce": "b7c5dff565f1b70a204a01e73ae94871bd959ce0255628b2ed749bd9edb747a7",
+			"passwd": "f3084d7f"
+		},
+		{
+			"application": "twitter",
+			"username": "jean+eude",
+			"nonce": "5dd62a5a77af08b317010c362be0e02996cb32474389317f049329fbcf0813d0",
+			"passwd": "8109267380bf9b2a048faea6d7314c29d198827c19f96e3f"
+		},
+		{
+			"application": "test",
+			"username": "connu",
+			"nonce": "23baf53273c67ca85c3d0fb60abbe9e0bffdde9e729af422fbd428895f5c5d17",
+			"passwd": "842111b660500743b9d3662f2a92d207b0442b2b098ddfaaa7ef5d9b7e5756e0"
+		},
+		{
+			"application": "no",
+			"username": "nop",
+			"nonce": "da7702954780951498499371caa17ffc8e3b03318573cd7d8938866ae5742da0",
+			"passwd": "05affd42479d406a31d36d8cec2df071c92fe35356aec3dd772f6e371e65"
+		},
+		{
+			"application": "on+espere",
+			"username": "pas+trop",
+			"nonce": "8ab27fb1114ed6664ac457bb1c20d60e35bd24f1be8d24914e0d7e8907866996",
+			"passwd": "1044703ed6206ba27eee194353c0afb19533c51961ac5b0765e5440b5fa0ed928217aecdba31a31e95cf4b9b10d7390821b4de21b68ad3cebdad2af154bceba2d5e7e7f450542a"
+		},
+		{
+			"application": "z%C3%A7dhzauhd",
+			"username": "poihfuih",
+			"nonce": "3cb2cdae2e051d4127635f2dc6620c7fcee2639d2a3c8913389dcf71df9e64f0",
+			"passwd": "a36651f5759ac79e22030b8bf717576dda376a340ab59057ad9bfd3b02b75b8c"
+		}
+	]
+}

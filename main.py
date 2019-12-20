@@ -2,8 +2,10 @@
 import os
 
 os.chdir("/home/pi/Keybox")
-os.system("ip -4 -br address show wlan0 > ip.txt")
-ip = open("ip.txt").read().split("\t")[-1]
+
+def ip()
+    os.system("ip -4 -br address show wlan0 > ip.txt")
+    return open("ip.txt").read().split("             ")[-1]
 
 from ecran.boutons import Boutons
 from ecran.ecran import Ecran
@@ -39,7 +41,7 @@ if not os.path.isfile(fileWallet):
     # activation du wifi 
     en_hostspot()
     monEcran.clear_scr()
-    monEcran.draw_text(ip, 0)
+    monEcran.draw_text(ip(), 0)
     monEcran.draw_text(get_wifi_passwd(), 1)
     monEcran.display()
     exit(0)
@@ -83,7 +85,7 @@ while True:
         # afficher mot de passe
         if wifi_entre == 2:
             monEcran.clear_scr()
-            monEcran.draw_text(ip, 0)
+            monEcran.draw_text(ip(), 0)
             monEcran.draw_text(get_wifi_passwd(), 1)
             monEcran.display()
             mesBoutons.while_pressed("OK", 5000)
