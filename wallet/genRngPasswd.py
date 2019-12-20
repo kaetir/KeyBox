@@ -8,7 +8,7 @@ def random_string(string_length: int = 10) -> str:
     @param string_length: int -> nombre de lettres
     @return str: la phrase de sortie
     """
-    letters = string.ascii_letters + string.punctuation
+    letters = string.ascii_letters + string.punctuation + string.digits
     return ''.join(random.choice(letters) for i in range(string_length))
 
 

@@ -1,0 +1,5 @@
+<tr>
+    <td>{acount[application]}</td>
+    <td>{acount[username]}</td>
+    <td>{acount[passwd]}</td>
+</tr>

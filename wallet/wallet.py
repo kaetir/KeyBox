@@ -64,7 +64,7 @@ class Wallet:
 
         if walletJson.get_entry(self.file, application):
             entry = walletJson.get_entry(self.file, application)
-            entry["passwd"] = mdp_decrypt(self.mainpassword, entry["passwd"], entry["nonce"])
+            entry["passwd"] = mdp_decrypt(self.mainpassword, entry["passwd"], entry["nonce"]).decode("utf8")
             return entry
 
     def get_applications(self) -> Optional[bool, list]:
@@ -82,7 +82,7 @@ class Wallet:
             print("WRONG PASSWORD")
             return False
 
-    def create_acount(self, application: str, username: str, passwd: str, mainpasswd: str) -> bool:
+    def create_acount(self, application: str, username: str, passwd: str) -> bool:
         """
         @summary creating an account in the file in parametre
         @param application: str the name of the application
@@ -126,4 +126,4 @@ if __name__ == "__main__":
         user = input("username : ")
         passwd = input("password : ")
 
-        w.create_acount(application, user, passwd, mainpasswd)
+        w.create_acount(application, user, passwd)
