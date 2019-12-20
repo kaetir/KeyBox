@@ -21,7 +21,7 @@ def change_wifi_passwd():
 
 def en_hostspot():
     change_wifi_passwd()
-    system("systemctl start hostapd")
+    system("systemctl restart hostapd")
 
 
 def dis_hostspot():
