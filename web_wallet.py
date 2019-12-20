@@ -171,7 +171,7 @@ def run(server_class=HTTPServer, handler_class=S, addr="0.0.0.0", port=80):
 
 
 if __name__ == "__main__":
-    fileWallet = "walletWeb.json"
+    fileWallet = "wallet.json"
     w = Wallet(fileWallet)
 
     parser = argparse.ArgumentParser(description="Run a simple HTTP server")

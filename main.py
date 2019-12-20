@@ -9,6 +9,8 @@ from ecran.menu import Menu
 from ecran.alphabet import Alphabet
 from hotspot.mod_hotspot import *
 
+import socket
+
 from wallet.wallet import Wallet
 
 monEcran = Ecran()
@@ -20,16 +22,30 @@ menuWifi = Menu(monEcran, mesBoutons, "ecran/hotspot.txt")
 menuWelcome = Menu(monEcran, mesBoutons, "ecran/Welcome.txt")
 ma_saisie = Alphabet(monEcran, mesBoutons)
 
-
-def write_keyboard(report):
-    with open('/dev/hidg0', 'rb+') as fd:
-        fd.write(report.encode())
-
-
 menuWelcome.select()
 
-# TODO Authentification
-while ma_saisie.select_alphabet() != "":
+fileWallet = "wallet.json"
+w = Wallet(fileWallet)
+
+if not os.path.isfile(fileWallet):
+    monEcran.clear_scr()
+    monEcran.draw_text("Creer un wallet avec", 0)
+    monEcran.draw_text("l'interface web", 1)
+    monEcran.display()
+    mesBoutons.while_pressed("OK", 5000)
+    while mesBoutons.getStatus("OK"):
+        pass
+    mesBoutons.while_pressed("OK", 60000)
+    # activation du wifi 
+    en_hostspot()
+    monEcran.clear_scr()
+    monEcran.draw_text(socket.gethostbyname(socket.gethostname()), 0)
+    monEcran.draw_text(get_wifi_passwd(), 1)
+    monEcran.display()
+    exit(0)
+    
+# Authentification
+while w.unlock(ma_saisie.select_alphabet()):
     print("NOP")
 
 while True:
@@ -39,37 +55,39 @@ while True:
         compte_entre = menuComptes.select()
         if compte_entre == -1:
             break
+        else:
+            monEcran.clear_scr()
+            #w 
+            monEcran.draw_text(socket.gethostbyname(socket.gethostname()), 0)
+            monEcran.draw_text(get_wifi_passwd(), 1)
+            monEcran.display()
+            mesBoutons.while_pressed("OK", 5000)
+            while mesBoutons.getStatus("OK"):
+                pass
+            mesBoutons.while_pressed("OK", 60000)
+            
 
     # Menu Wifi
     while entre == 1:
         wifi_entre = menuWifi.select()
         if wifi_entre == -1:
             break
+        # activer hotspot
         elif wifi_entre == 0:
             en_hostspot()
-            print("OK")
+            wifi_entre = 2
+        # desactiver hotspot
         elif wifi_entre == 1:
             dis_hostspot()
-        elif wifi_entre == 2:
+        
+        # afficher mot de passe
+        if wifi_entre == 2:
             monEcran.clear_scr()
-            monEcran.draw_text(get_wifi_passwd(), 0)
+            monEcran.draw_text(socket.gethostbyname(socket.gethostname()), 0)
+            monEcran.draw_text(get_wifi_passwd(), 1)
             monEcran.display()
             mesBoutons.while_pressed("OK", 5000)
             while mesBoutons.getStatus("OK"):
-                print("TODO")
+                pass
             mesBoutons.while_pressed("OK", 60000)
-    # test clavier
-    if entre == 2: # Non bloquant
-        NULL_CHAR = chr(0)
-        # Press c key
-        write_keyboard(NULL_CHAR * 2 + chr(6) + NULL_CHAR * 5)
-        # Press a
-        write_keyboard(NULL_CHAR * 2 + chr(4) + NULL_CHAR * 5)
-        # Release keys
-        write_keyboard(NULL_CHAR * 8)
-        # Press c key
-        write_keyboard(NULL_CHAR * 2 + chr(6) + NULL_CHAR * 5)
-        # Press a
-        write_keyboard(NULL_CHAR * 2 + chr(4) + NULL_CHAR * 5)
-        # Release keys
-        write_keyboard(NULL_CHAR * 8)
+    
